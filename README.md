@@ -5,6 +5,7 @@
 - [Daniel Lee](https://github.com/d-leeee)
 - [Ria Maria Mathew](https://github.com/ria0516)
 - [Sabrina Piazza](https://github.com/Sabrinapiazza)
+- [Maanas Kollegal](https://github.com/MaanasKollegal)
 
 ## Project Description
 **Trace AI** is a smart note-taking application that helps users refine and organize their notes efficiently. The app allows users to input their rough notes in one window, while an AI-based engine works in another window to clean, format, and summarize the content for better readability and organization. This project combines the power of AI with a user-friendly interface to make the note-taking process more streamlined and effective.
