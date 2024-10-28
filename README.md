@@ -1,96 +1,68 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# Trace AI - Note Refining App
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+## Group Members
+- [Nidheesh M Vakharia](https://github.com/yourgithubprofile)
+- [Daniel Lee](https://github.com/d-leeee)
+- [Ria Maria Mathew](https://github.com/ria0516)
+- [Sabrina Piazza](https://github.com/Sabrinapiazza)
+- [Maanas Kollegal](https://github.com/MaanasKollegal)
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+## Project Description
+**Trace AI** is a smart note-taking application that helps users refine and organize their notes efficiently. The app allows users to input their rough notes in one window, while an AI-based engine works in another window to clean, format, and summarize the content for better readability and organization. This project combines the power of AI with a user-friendly interface to make the note-taking process more streamlined and effective.
 
-## Features
+### Why is it important or interesting to you?
+Note-taking is a crucial skill for students and professionals alike. However, many people struggle to keep their notes organized or formatted in a way that is easy to review. With **Trace AI**, we aim to make note-taking more efficient by leveraging AI to clean and refine notes automatically, allowing users to focus on the content rather than formatting. The project is particularly interesting because it merges AI technologies with real-world applications in education and productivity. It also provides the team with hands-on experience in working with cutting-edge technologies.
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+### What languages/tools/technologies do you plan to use?
+- **Languages**: 
+  - TypeScript: Ensures type safety and scalable code.
 
-## Demo
+- **Frameworks**:
+  - Next.js: A React-based framework with server-side rendering capabilities. This will enhance the performance of our app and improve SEO. Additionally, Next.js allows easy API creation, which is essential for our AI integration.
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+- **Authentication**:
+  - Supabase: Used for user authentication and database management. Supabase provides secure access to personal notes and features such as user profiles and saved preferences. It integrates well with Next.js and offers real-time capabilities.
 
-## Deploy to Vercel
+- **Styling**:
+  - Tailwind CSS: A utility-first CSS framework that will allow us to build a responsive and modern UI quickly. Its flexibility and built-in utilities will make the design process more efficient.
 
-Vercel deployment will guide you through creating a Supabase account and project.
+- **AI**:
+  - Google’s Gemini API: We chose Google’s Gemini API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s also highly reliable and backed by Google’s extensive research in AI.
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+- **Project Tools**:
+  - GitHub for version control and collaboration.
+  - GitHub Projects for task management.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+### What will be the input/output of your project?
+- **Input**: 
+  - User’s raw notes, either typed or pasted into the input window.
+  - User preferences for how refined they want the output (e.g., summarized, formatted, etc.)
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+- **Output**: 
+  - A cleaner, more organized version of the input notes in the output window.
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+### Features of Trace AI
+- Real-time note refinement using AI
+- Summarization and keyword extraction
+- Customizable formatting options (e.g., headers, bullet points, etc.)
+- Authentication and data management using Supabase to secure user notes
+- Export options for refined notes (e.g., PDF, Markdown)
+- User-friendly interface with two windows: one for input and one for the AI-refined output
+- Integration with popular note-taking apps (stretch goal)
 
-## Clone and run locally
+## Project Complexity
+The complexity of the project is appropriate for the timeline and the team size. We will be building both a user-facing interface and an AI backend, involving the integration of several technologies, including natural language processing models, secure authentication, and front-end frameworks. Each team member will be responsible for different components (e.g., frontend, backend, AI model integration), ensuring a balanced workload.
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+---
 
-2. Create a Next.js app using the Supabase Starter template npx command
+## Project Workflow
 
-   ```bash
-   npx create-next-app -e with-supabase
-   ```
+Every issue or task in Trace AI will pass through the following stages before deployment:
 
-3. Use `cd` to change into the app's directory
+1. **Backlog**: All planned features and tasks start here. This includes ideas, suggestions, and features that are not yet prioritized for immediate work.
+2. **Sprint Backlog**: Features and tasks selected for the current sprint are moved here. These are the tasks that the team has committed to work on during the sprint cycle.
+3. **In Development**: Active development occurs in this stage. Once the task is being worked on, it moves from the sprint backlog to this stage.
+4. **In Testing**: After development, the task is moved here for testing. This can involve unit tests, integration tests, and user acceptance tests to ensure functionality works as expected.
+5. **Deployment**: Once a task or feature passes testing, it is moved to deployment, where it is released to production.
 
-   ```bash
-   cd name-of-new-app
-   ```
-
-4. Rename `.env.example` to `.env.local` and update the following:
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
-
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
-
-5. You can now run the Next.js local development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
-
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
-
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
-
-## Feedback and issues
-
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
-
-## More Supabase examples
-
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+This workflow helps to ensure a structured, consistent, and high-quality development process.
