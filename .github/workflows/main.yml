@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Latest version of actions/checkout
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Latest version of actions/setup-node
         with:
-          node-version: '18'
+          node-version: 'node' # Uses the latest stable version of Node.js
 
       - name: Install dependencies
         run: npm install
@@ -33,12 +33,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Latest version of actions/checkout
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Latest version of actions/setup-node
         with:
-          node-version: '18'
+          node-version: 'node' # Uses the latest stable version of Node.js
 
       - name: Install dependencies
         run: npm install
@@ -55,12 +55,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Latest version of actions/checkout
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Latest version of actions/setup-node
         with:
-          node-version: '18'
+          node-version: 'node' # Uses the latest stable version of Node.js
 
       - name: Install dependencies
         run: npm install
