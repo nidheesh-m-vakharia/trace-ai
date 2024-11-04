@@ -81,6 +81,67 @@ Every issue or task in Trace AI will pass through the following stages before de
 This workflow helps to ensure a structured, consistent, and high-quality development process.
 
 ---
+## User Interface Flow Diagram
+This section provides an overview of the User Interface (UI) flow for the application using Mermaid to visualize the navigation and routing logic. The diagram demonstrates the different paths a user can take and how the system responds under various conditions.
+
+Below is the Mermaid code used to create the UI flow diagram:
+```mermaid
+flowchart TB
+    start((Start)) --> /
+    start((Start)) --> |invalid URL| /not-found
+    start((Start)) --> |direct URL & Cookies| /create
+    start((Start)) --> |attempt to go to create page but no previous cookies| /login
+
+    / --> |wrong url| /not-found
+    / --> |log out| /
+    / --> |login attempt| /login
+
+    /login --> |back after login| /create
+    /login --> |if no account| /create-account
+
+    /create-account --> |return to home page| /
+
+    /create --> |bad request| /error
+    /create --> |logged in; using tool| /
+    /login --> /
+    /create-account --> /error
+
+    /not-found --> /error
+
+    /error --> |recurring| /error
+    /error --> |return home| /
+    /not-found --> |return home|/
+```
+### Diagram Overview
+
+1. **Start Points**: The diagram begins from multiple starting conditions:
+   - **Regular Start**: Directs the user to the home page (`/`).
+   - **Invalid URL**: Takes the user to the "not found" page (`/not-found`).
+   - **Direct URL Access with Cookies**: If the user has valid session cookies, they are taken to the `/create` page.
+   - **No Previous Cookies**: If the user attempts to access `/create` but lacks authentication cookies, they are redirected to the login page (`/login`).
+
+2. **Home Page (`/`)**:
+   - Redirects to `/not-found` if a wrong URL is used.
+   - Handles log-out actions and takes the user back to the home page.
+   - Routes the user to the login page if a login attempt is made.
+
+3. **Login Page (`/login`)**:
+   - If the login is successful, the user is redirected to `/create`.
+   - If the user doesn't have an account, they are directed to the account creation page (`/create-account`).
+
+4. **Account Creation (`/create-account`)**:
+   - On successful account creation, the user returns to the home page.
+
+5. **Create Page (`/create`)**:
+   - Redirects to an error page (`/error`) if a bad request is detected.
+   - If the user is logged in and using the tool, they return to the home page.
+
+6. **Error Handling**:
+   - The `/error` page handles recurring issues by reloading itself.
+   - Users can choose to return to the home page from the error page.
+   - The `/not-found` page also provides an option to return to the home page.
+
+---
 ## UML Class Diagram Explanation
 
 ```mermaid
@@ -276,5 +337,4 @@ Below is a breakdown of the key components:
   - `CreatePage` uses `TextInput` for user input and `Button` for actions.
   - `CreatePage` also interacts with the `OpenAIApi` to perform text refinement.
   - `NotFoundPage` and `ErrorPage` also utilize `Button` and `Card` for their layouts.
-
-This diagram effectively communicates the structure and functionality of the **Trace AI** application, aiding in the development process by providing a clear overview of how different components interact with each other.
+ 
