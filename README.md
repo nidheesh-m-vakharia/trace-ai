@@ -28,7 +28,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 
 - **Authentication**:
 
-  - Supabase: Used for user authentication and database management. Supabase provides secure access to personal notes and features such as user profiles and saved preferences. It integrates well with Next.js and offers real-time capabilities.
+  - **Clerk**: Used for user authentication and management. Clerk provides secure access to personal notes and features such as user profiles and saved preferences. It integrates well with Next.js and offers real-time capabilities.
 
 - **Styling**:
 
@@ -36,7 +36,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 
 - **AI**:
 
-  - Google’s Gemini API: We chose Google’s Gemini API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s also highly reliable and backed by Google’s extensive research in AI.
+  - **OpenAI API**: We chose OpenAI's API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s highly reliable and widely recognized for its capabilities in AI.
 
 - **Project Tools**:
   - GitHub for version control and collaboration.
@@ -57,7 +57,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 - Real-time note refinement using AI
 - Summarization and keyword extraction
 - Customizable formatting options (e.g., headers, bullet points, etc.)
-- Authentication and data management using Supabase to secure user notes
+- Authentication and data management using Clerk to secure user notes
 - Export options for refined notes (e.g., PDF, Markdown)
 - User-friendly interface with two windows: one for input and one for the AI-refined output
 - Integration with popular note-taking apps (stretch goal)
@@ -79,3 +79,5 @@ Every issue or task in Trace AI will pass through the following stages before de
 5. **Deployment**: Once a task or feature passes testing, it is moved to deployment, where it is released to production.
 
 This workflow helps to ensure a structured, consistent, and high-quality development process.
+
+---
