@@ -1,4 +1,5 @@
 # Trace AI - Note Refining App
+![Desktop - 1](https://github.com/user-attachments/assets/0ca3a34f-dfba-4f2b-adac-d3a7180a85cd)
 
 ## Group Members
 
@@ -37,6 +38,9 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 - **AI**:
 
   - **OpenAI API**: We chose OpenAI's API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s highly reliable and widely recognized for its capabilities in AI.
+- **UI**:
+
+  - **ShadCN**: We have chosen ShadCN as it is a collection of high fidelity React UI components which have animations and behaviors and is a new industry standard for front end development.
 
 - **Project Tools**:
   - GitHub for version control and collaboration.
@@ -79,6 +83,44 @@ Every issue or task in Trace AI will pass through the following stages before de
 5. **Deployment**: Once a task or feature passes testing, it is moved to deployment, where it is released to production.
 
 This workflow helps to ensure a structured, consistent, and high-quality development process.
+
+---
+## User Interface
+
+### Homepage `/`
+![Desktop - 1](https://github.com/user-attachments/assets/92b978a3-d99e-45ec-88b3-0cc677c3abd1)
+This is the site's homepage on `/`. This page will redirect the user to the `/create` page. This page also contains options to log in.
+
+### Create Page `/create`
+![Create Page](https://github.com/user-attachments/assets/fb79f866-9bb9-4d94-a433-9c522c7510f0)
+
+The Create page allows the user to use the AI assistant-driven note-taking tool. The page can only be accessed if the user has logged in. 
+
+![Create page - help button](https://github.com/user-attachments/assets/a2efc8af-faf6-4277-8298-b656ccab899c)
+
+There are also helpful tooltips scattered all accross the page in order to direct the user.
+
+### Log In Page `/log-in`
+<img src="https://github.com/user-attachments/assets/83e0644a-4321-4d8c-86c6-f24c8ff3ba85" height="600">
+<br>
+This is the Log In page driven by clerk API which is our prefered backend. The page will offer options to login with Google, Github and LinkedIn.
+
+### Create Account `/create-account`
+<img src="https://github.com/user-attachments/assets/ccf16d1f-655c-46df-9abd-4af2e4c9e49c" height="600">
+<br>
+This is the Create account page driven by clerk.
+
+### 404 Page `/not-found`
+![404 Page](https://github.com/user-attachments/assets/e08d509c-ab01-4d20-83fd-ea72fcdfb73c)
+
+This page will appear when the page being accessed doesn't exist in the web app.
+
+### Error Page `/error`
+![Error Page](https://github.com/user-attachments/assets/c9537422-f65f-4918-b323-4c438e4ac00c)
+
+This page appears when there is some error encountered by the AI API or any other section of the website.
+
+
 
 ---
 ## User Interface Flow Diagram
