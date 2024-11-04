@@ -46,7 +46,7 @@ jobs:
           CI: true
 
       - name: Run ESLint
-        run: npm run lint
+        run: npm run eslint
 
   build:
     name: Build Project
