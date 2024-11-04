@@ -1,4 +1,5 @@
 # Trace AI - Note Refining App
+
 ![Desktop - 1](https://github.com/user-attachments/assets/0ca3a34f-dfba-4f2b-adac-d3a7180a85cd)
 
 ## Group Members
@@ -38,6 +39,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 - **AI**:
 
   - **OpenAI API**: We chose OpenAI's API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s highly reliable and widely recognized for its capabilities in AI.
+
 - **UI**:
 
   - **ShadCN**: We have chosen ShadCN as it is a collection of high fidelity React UI components which have animations and behaviors and is a new industry standard for front end development.
@@ -85,48 +87,56 @@ Every issue or task in Trace AI will pass through the following stages before de
 This workflow helps to ensure a structured, consistent, and high-quality development process.
 
 ---
+
 ## User Interface
 
 ### Homepage `/`
+
 ![Desktop - 1](https://github.com/user-attachments/assets/92b978a3-d99e-45ec-88b3-0cc677c3abd1)
 This is the site's homepage on `/`. This page will redirect the user to the `/create` page. This page also contains options to log in.
 
 ### Create Page `/create`
+
 ![Create Page](https://github.com/user-attachments/assets/fb79f866-9bb9-4d94-a433-9c522c7510f0)
 
-The Create page allows the user to use the AI assistant-driven note-taking tool. The page can only be accessed if the user has logged in. 
+The Create page allows the user to use the AI assistant-driven note-taking tool. The page can only be accessed if the user has logged in.
 
 ![Create page - help button](https://github.com/user-attachments/assets/a2efc8af-faf6-4277-8298-b656ccab899c)
 
 There are also helpful tooltips scattered all accross the page in order to direct the user.
 
 ### Log In Page `/log-in`
+
 <img src="https://github.com/user-attachments/assets/83e0644a-4321-4d8c-86c6-f24c8ff3ba85" height="600">
 <br>
 This is the Log In page driven by clerk API which is our prefered backend. The page will offer options to login with Google, Github and LinkedIn.
 
 ### Create Account `/create-account`
+
 <img src="https://github.com/user-attachments/assets/ccf16d1f-655c-46df-9abd-4af2e4c9e49c" height="600">
 <br>
 This is the Create account page driven by clerk.
 
 ### 404 Page `/not-found`
+
 ![404 Page](https://github.com/user-attachments/assets/e08d509c-ab01-4d20-83fd-ea72fcdfb73c)
 
 This page will appear when the page being accessed doesn't exist in the web app.
 
 ### Error Page `/error`
+
 ![Error Page](https://github.com/user-attachments/assets/c9537422-f65f-4918-b323-4c438e4ac00c)
 
 This page appears when there is some error encountered by the AI API or any other section of the website.
 
-
-
 ---
+
 ## User Interface Flow Diagram
+
 This section provides an overview of the User Interface (UI) flow for the application using Mermaid to visualize the navigation and routing logic. The diagram demonstrates the different paths a user can take and how the system responds under various conditions.
 
 Below is the Mermaid code used to create the UI flow diagram:
+
 ```mermaid
 flowchart TB
     start((Start)) --> /
@@ -154,27 +164,33 @@ flowchart TB
     /error --> |return home| /
     /not-found --> |return home|/
 ```
+
 ### Diagram Overview
 
 1. **Start Points**: The diagram begins from multiple starting conditions:
+
    - **Regular Start**: Directs the user to the home page (`/`).
    - **Invalid URL**: Takes the user to the "not found" page (`/not-found`).
    - **Direct URL Access with Cookies**: If the user has valid session cookies, they are taken to the `/create` page.
    - **No Previous Cookies**: If the user attempts to access `/create` but lacks authentication cookies, they are redirected to the login page (`/login`).
 
 2. **Home Page (`/`)**:
+
    - Redirects to `/not-found` if a wrong URL is used.
    - Handles log-out actions and takes the user back to the home page.
    - Routes the user to the login page if a login attempt is made.
 
 3. **Login Page (`/login`)**:
+
    - If the login is successful, the user is redirected to `/create`.
    - If the user doesn't have an account, they are directed to the account creation page (`/create-account`).
 
 4. **Account Creation (`/create-account`)**:
+
    - On successful account creation, the user returns to the home page.
 
 5. **Create Page (`/create`)**:
+
    - Redirects to an error page (`/error`) if a bad request is detected.
    - If the user is logged in and using the tool, they return to the home page.
 
@@ -184,6 +200,7 @@ flowchart TB
    - The `/not-found` page also provides an option to return to the home page.
 
 ---
+
 ## UML Class Diagram Explanation
 
 ```mermaid
@@ -294,6 +311,7 @@ Below is a breakdown of the key components:
 ### Page Components
 
 1. **HomePage**
+
    - **Attributes**:
      - `title: string`: The title of the homepage.
      - `description: string`: A brief description displayed on the homepage.
@@ -306,6 +324,7 @@ Below is a breakdown of the key components:
      - `handleButtonClick(event: MouseEvent): void`: Handles button click events.
 
 2. **CreatePage**
+
    - **Attributes**:
      - `textInput: string`: The raw notes input by the user.
      - `refinedText: string`: The output text after refinement.
@@ -316,6 +335,7 @@ Below is a breakdown of the key components:
      - `onRefineButtonClick(event: MouseEvent): void`: Handles the event when the refine button is clicked.
 
 3. **NotFoundPage**
+
    - **Attributes**:
      - `errorText: string`: The error message displayed when a page is not found.
    - **Methods**:
@@ -324,11 +344,13 @@ Below is a breakdown of the key components:
      - `handleBackClick(event: MouseEvent): void`: Handles the back button click event.
 
 4. **LoginPage**
+
    - **Methods**:
      - `render(): JSX`: Renders the login page.
      - `handleSignInClick(event: MouseEvent): void`: Handles sign-in button click events.
 
 5. **SignUpPage**
+
    - **Methods**:
      - `render(): JSX`: Renders the sign-up page.
      - `handleSignUpClick(event: MouseEvent): void`: Handles sign-up button click events.
@@ -351,6 +373,7 @@ Below is a breakdown of the key components:
 ### UI Components
 
 1. **TextInput**
+
    - **Attributes**:
      - `value: string`: The current value of the text input.
    - **Methods**:
@@ -358,6 +381,7 @@ Below is a breakdown of the key components:
      - `props: HTMLAttributes<HTMLInputElement>`: Props for the input element.
 
 2. **Button**
+
    - **Attributes**:
      - `label: string`: The label displayed on the button.
    - **Methods**:
@@ -374,9 +398,8 @@ Below is a breakdown of the key components:
 ### Relationships
 
 - **Inheritance**: All page components (e.g., `HomePage`, `CreatePage`, `LoginPage`, etc.) inherit from `BaseComponent`, ensuring a consistent structure.
-- **Composition**: 
+- **Composition**:
   - `HomePage` is composed of `Button` and `Card` components, allowing for interactive elements.
   - `CreatePage` uses `TextInput` for user input and `Button` for actions.
   - `CreatePage` also interacts with the `OpenAIApi` to perform text refinement.
   - `NotFoundPage` and `ErrorPage` also utilize `Button` and `Card` for their layouts.
- 
