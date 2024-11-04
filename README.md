@@ -1,5 +1,7 @@
 # Trace AI - Note Refining App
 
+![Desktop - 1](https://github.com/user-attachments/assets/0ca3a34f-dfba-4f2b-adac-d3a7180a85cd)
+
 ## Group Members
 
 - [Nidheesh M Vakharia](https://github.com/yourgithubprofile)
@@ -28,7 +30,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 
 - **Authentication**:
 
-  - Supabase: Used for user authentication and database management. Supabase provides secure access to personal notes and features such as user profiles and saved preferences. It integrates well with Next.js and offers real-time capabilities.
+  - **Clerk**: Used for user authentication and management. Clerk provides secure access to personal notes and features such as user profiles and saved preferences. It integrates well with Next.js and offers real-time capabilities.
 
 - **Styling**:
 
@@ -36,7 +38,11 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 
 - **AI**:
 
-  - Google’s Gemini API: We chose Google’s Gemini API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s also highly reliable and backed by Google’s extensive research in AI.
+  - **OpenAI API**: We chose OpenAI's API for natural language processing because it offers powerful, efficient, and customizable models for text refinement, summarization, and understanding. It’s highly reliable and widely recognized for its capabilities in AI.
+
+- **UI**:
+
+  - **ShadCN**: We have chosen ShadCN as it is a collection of high fidelity React UI components which have animations and behaviors and is a new industry standard for front end development.
 
 - **Project Tools**:
   - GitHub for version control and collaboration.
@@ -57,7 +63,7 @@ Note-taking is a crucial skill for students and professionals alike. However, ma
 - Real-time note refinement using AI
 - Summarization and keyword extraction
 - Customizable formatting options (e.g., headers, bullet points, etc.)
-- Authentication and data management using Supabase to secure user notes
+- Authentication and data management using Clerk to secure user notes
 - Export options for refined notes (e.g., PDF, Markdown)
 - User-friendly interface with two windows: one for input and one for the AI-refined output
 - Integration with popular note-taking apps (stretch goal)
@@ -79,3 +85,321 @@ Every issue or task in Trace AI will pass through the following stages before de
 5. **Deployment**: Once a task or feature passes testing, it is moved to deployment, where it is released to production.
 
 This workflow helps to ensure a structured, consistent, and high-quality development process.
+
+---
+
+## User Interface
+
+### Homepage `/`
+
+![Desktop - 1](https://github.com/user-attachments/assets/92b978a3-d99e-45ec-88b3-0cc677c3abd1)
+This is the site's homepage on `/`. This page will redirect the user to the `/create` page. This page also contains options to log in.
+
+### Create Page `/create`
+
+![Create Page](https://github.com/user-attachments/assets/fb79f866-9bb9-4d94-a433-9c522c7510f0)
+
+The Create page allows the user to use the AI assistant-driven note-taking tool. The page can only be accessed if the user has logged in.
+
+![Create page - help button](https://github.com/user-attachments/assets/a2efc8af-faf6-4277-8298-b656ccab899c)
+
+There are also helpful tooltips scattered all accross the page in order to direct the user.
+
+### Log In Page `/log-in`
+
+<img src="https://github.com/user-attachments/assets/83e0644a-4321-4d8c-86c6-f24c8ff3ba85" height="600">
+<br>
+This is the Log In page driven by clerk API which is our prefered backend. The page will offer options to login with Google, Github and LinkedIn.
+
+### Create Account `/create-account`
+
+<img src="https://github.com/user-attachments/assets/ccf16d1f-655c-46df-9abd-4af2e4c9e49c" height="600">
+<br>
+This is the Create account page driven by clerk.
+
+### 404 Page `/not-found`
+
+![404 Page](https://github.com/user-attachments/assets/e08d509c-ab01-4d20-83fd-ea72fcdfb73c)
+
+This page will appear when the page being accessed doesn't exist in the web app.
+
+### Error Page `/error`
+
+![Error Page](https://github.com/user-attachments/assets/c9537422-f65f-4918-b323-4c438e4ac00c)
+
+This page appears when there is some error encountered by the AI API or any other section of the website.
+
+---
+
+## User Interface Flow Diagram
+
+This section provides an overview of the User Interface (UI) flow for the application using Mermaid to visualize the navigation and routing logic. The diagram demonstrates the different paths a user can take and how the system responds under various conditions.
+
+Below is the Mermaid code used to create the UI flow diagram:
+
+```mermaid
+flowchart TB
+    start((Start)) --> /
+    start((Start)) --> |invalid URL| /not-found
+    start((Start)) --> |direct URL & Cookies| /create
+    start((Start)) --> |attempt to go to create page but no previous cookies| /login
+
+    / --> |wrong url| /not-found
+    / --> |log out| /
+    / --> |login attempt| /login
+
+    /login --> |back after login| /create
+    /login --> |if no account| /create-account
+
+    /create-account --> |return to home page| /
+
+    /create --> |bad request| /error
+    /create --> |logged in; using tool| /
+    /login --> /
+    /create-account --> /error
+
+    /not-found --> /error
+
+    /error --> |recurring| /error
+    /error --> |return home| /
+    /not-found --> |return home|/
+```
+
+### Diagram Overview
+
+1. **Start Points**: The diagram begins from multiple starting conditions:
+
+   - **Regular Start**: Directs the user to the home page (`/`).
+   - **Invalid URL**: Takes the user to the "not found" page (`/not-found`).
+   - **Direct URL Access with Cookies**: If the user has valid session cookies, they are taken to the `/create` page.
+   - **No Previous Cookies**: If the user attempts to access `/create` but lacks authentication cookies, they are redirected to the login page (`/login`).
+
+2. **Home Page (`/`)**:
+
+   - Redirects to `/not-found` if a wrong URL is used.
+   - Handles log-out actions and takes the user back to the home page.
+   - Routes the user to the login page if a login attempt is made.
+
+3. **Login Page (`/login`)**:
+
+   - If the login is successful, the user is redirected to `/create`.
+   - If the user doesn't have an account, they are directed to the account creation page (`/create-account`).
+
+4. **Account Creation (`/create-account`)**:
+
+   - On successful account creation, the user returns to the home page.
+
+5. **Create Page (`/create`)**:
+
+   - Redirects to an error page (`/error`) if a bad request is detected.
+   - If the user is logged in and using the tool, they return to the home page.
+
+6. **Error Handling**:
+   - The `/error` page handles recurring issues by reloading itself.
+   - Users can choose to return to the home page from the error page.
+   - The `/not-found` page also provides an option to return to the home page.
+
+---
+
+## UML Class Diagram Explanation
+
+```mermaid
+classDiagram
+    %% Base Types %%
+    class BaseComponent {
+        +children : ReactNode
+        +render() : JSX
+    }
+
+    %% Page Components %%
+    %% Group Main Pages %%
+    class HomePage {
+        +title : string
+        +description : string
+        +render() : JSX
+        +headerMenu : JSX
+        +footer : JSX
+        +createButtons() : void
+        +showProjectDetails() : void
+        +handleButtonClick(event : MouseEvent) : void
+    }
+
+    class CreatePage {
+        +textInput : string
+        +refinedText : string
+        +handleInput(text : string) : void
+        +refineText(text : string) : Promise<string>
+        +onTextInputChange(event : ChangeEvent<HTMLInputElement>) : void
+        +onRefineButtonClick(event : MouseEvent) : void
+    }
+
+    class NotFoundPage {
+        +errorText : string
+        +render() : JSX
+        +backToHome() : void
+        +handleBackClick(event : MouseEvent) : void
+    }
+
+    class LoginPage {
+        +render() : JSX
+        +handleSignInClick(event : MouseEvent) : void
+    }
+
+    class SignUpPage {
+        +render() : JSX
+        +handleSignUpClick(event : MouseEvent) : void
+    }
+
+    class ErrorPage {
+        +render() : JSX
+        +error : string
+        +displayErrorMessage() : void
+    }
+
+    %% API Integrations %%
+    class OpenAIApi {
+        +refineText(input : string) : Promise<string>
+        +openAiApiKey : string
+    }
+
+    %% UI Components %%
+    class TextInput {
+        +value : string
+        +onChange(event : ChangeEvent<HTMLInputElement>) : void
+        +props : HTMLAttributes<HTMLInputElement>
+    }
+
+    class Button {
+        +label : string
+        +onClick(event : MouseEvent) : void
+        +props : HTMLButtonProps<HTMLButtonElement>
+    }
+
+    class Card {
+        +title : string
+        +content : JSX
+        +props : HTMLDivProps<HTMLDivElement>
+    }
+
+    %% Relationships %%
+    BaseComponent <|-- HomePage : FC
+    BaseComponent <|-- NotFoundPage : FC
+    BaseComponent <|-- CreatePage : FC
+    BaseComponent <|-- LoginPage : FC
+    BaseComponent <|-- SignUpPage : FC
+    BaseComponent <|-- ErrorPage : FC
+
+    HomePage *-- Button
+    HomePage *-- Card
+    NotFoundPage *-- Button
+    CreatePage *-- TextInput
+    CreatePage *-- Button
+    CreatePage o-- OpenAIApi
+    ErrorPage *-- Card
+```
+
+Below is a breakdown of the key components:
+
+### BaseComponent
+
+- **Purpose**: Serves as a parent class for all main page components.
+- **Attributes**:
+  - `children: ReactNode`: Represents child components that can be rendered within the base component.
+- **Methods**:
+  - `render(): JSX`: Renders the component.
+
+### Page Components
+
+1. **HomePage**
+
+   - **Attributes**:
+     - `title: string`: The title of the homepage.
+     - `description: string`: A brief description displayed on the homepage.
+     - `headerMenu: JSX`: The header menu component for navigation.
+     - `footer: JSX`: The footer component.
+   - **Methods**:
+     - `render(): JSX`: Renders the homepage.
+     - `createButtons(): void`: Creates buttons for user interaction.
+     - `showProjectDetails(): void`: Displays project details.
+     - `handleButtonClick(event: MouseEvent): void`: Handles button click events.
+
+2. **CreatePage**
+
+   - **Attributes**:
+     - `textInput: string`: The raw notes input by the user.
+     - `refinedText: string`: The output text after refinement.
+   - **Methods**:
+     - `handleInput(text: string): void`: Handles the input of raw notes.
+     - `refineText(text: string): Promise<string>`: Calls the AI API to refine the input text.
+     - `onTextInputChange(event: ChangeEvent<HTMLInputElement>): void`: Monitors changes in the text input field.
+     - `onRefineButtonClick(event: MouseEvent): void`: Handles the event when the refine button is clicked.
+
+3. **NotFoundPage**
+
+   - **Attributes**:
+     - `errorText: string`: The error message displayed when a page is not found.
+   - **Methods**:
+     - `render(): JSX`: Renders the not found page.
+     - `backToHome(): void`: Navigates back to the homepage.
+     - `handleBackClick(event: MouseEvent): void`: Handles the back button click event.
+
+4. **LoginPage**
+
+   - **Methods**:
+     - `render(): JSX`: Renders the login page.
+     - `handleSignInClick(event: MouseEvent): void`: Handles sign-in button click events.
+
+5. **SignUpPage**
+
+   - **Methods**:
+     - `render(): JSX`: Renders the sign-up page.
+     - `handleSignUpClick(event: MouseEvent): void`: Handles sign-up button click events.
+
+6. **ErrorPage**
+   - **Attributes**:
+     - `error: string`: The error message to be displayed.
+   - **Methods**:
+     - `render(): JSX`: Renders the error page.
+     - `displayErrorMessage(): void`: Displays the specific error message.
+
+### API Integrations
+
+- **OpenAIApi**
+  - **Attributes**:
+    - `openAiApiKey: string`: The API key for authenticating with the OpenAI service.
+  - **Methods**:
+    - `refineText(input: string): Promise<string>`: Sends the input text to the OpenAI API for refinement and returns the processed text.
+
+### UI Components
+
+1. **TextInput**
+
+   - **Attributes**:
+     - `value: string`: The current value of the text input.
+   - **Methods**:
+     - `onChange(event: ChangeEvent<HTMLInputElement>): void`: Handles changes in the text input field.
+     - `props: HTMLAttributes<HTMLInputElement>`: Props for the input element.
+
+2. **Button**
+
+   - **Attributes**:
+     - `label: string`: The label displayed on the button.
+   - **Methods**:
+     - `onClick(event: MouseEvent): void`: Handles button click events.
+     - `props: HTMLButtonProps<HTMLButtonElement>`: Props for the button element.
+
+3. **Card**
+   - **Attributes**:
+     - `title: string`: The title of the card.
+     - `content: JSX`: The content to be displayed in the card.
+   - **Methods**:
+     - `props: HTMLDivProps<HTMLDivElement>`: Props for the card component.
+
+### Relationships
+
+- **Inheritance**: All page components (e.g., `HomePage`, `CreatePage`, `LoginPage`, etc.) inherit from `BaseComponent`, ensuring a consistent structure.
+- **Composition**:
+  - `HomePage` is composed of `Button` and `Card` components, allowing for interactive elements.
+  - `CreatePage` uses `TextInput` for user input and `Button` for actions.
+  - `CreatePage` also interacts with the `OpenAIApi` to perform text refinement.
+  - `NotFoundPage` and `ErrorPage` also utilize `Button` and `Card` for their layouts.
