@@ -1,8 +1,16 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <div>
+      <Image
+        src="/smile.svg" // add a new file this will be added to public
+        alt="smile logo" //
+        width={200}
+        height={100}
+        priority
+      />
       <h1>Trace AI</h1>
       <p>
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
