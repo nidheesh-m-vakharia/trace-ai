@@ -4,6 +4,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import route from "@/app/create/openai/route"
+
 const CreatePage = () => {
   const { toast } = useToast();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,7 +49,7 @@ const CreatePage = () => {
           </span>
           <span>
             <span className="flex h-fit flex-col">
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" onClick={()=>route("hello")}>
                 <Wand2 size={24} />
                 Create
               </Button>
