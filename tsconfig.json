@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/create/openai/chat.js"
+    "src/app/create/api/chat.js"
   ],
   "exclude": ["node_modules"]
 }

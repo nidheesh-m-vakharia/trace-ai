@@ -7,7 +7,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const route = async (input) => {
+async function main() {
   const assistant = await openai.beta.assistants.create({
     name: "Note Enhancer",
     instructions:
@@ -15,6 +15,7 @@ const route = async (input) => {
     tools: [{ type: "file_search" }],
     model: "gpt-4o-mini",
   });
+
   const thread = await openai.beta.threads.create();
 
   const message = await openai.beta.threads.messages.create(thread.id, {
@@ -53,6 +54,6 @@ const route = async (input) => {
         }
       }
     });
-};
+}
 
-export default route;
+main();
