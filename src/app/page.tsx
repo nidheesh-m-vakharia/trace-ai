@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <div>
-      
-      <h1 className= "mt-10">Trace AI</h1>
-      <p className="mt-6 mb-4 text-xl tracking-wide leading-8">
+      <h1 className="mt-10">Trace AI</h1>
+      <p className="mb-4 mt-6 text-xl leading-8 tracking-wide">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -20,7 +19,7 @@ export default function Home() {
         alt="smile logo" //
         width={200}
         height={100}
-        className= "w-full mx-auto"
+        className="mx-auto w-full"
       />
     </div>
   );
