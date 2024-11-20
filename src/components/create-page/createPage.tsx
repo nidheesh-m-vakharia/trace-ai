@@ -71,10 +71,7 @@ const CreatePageForm = ({
   return (
     <form
       onSubmit={onSubmit}
-      className={cn(
-        className,
-        "grid grid-cols-2 gap-4 bg-transparent",
-      )}
+      className={cn(className, "grid grid-cols-2 gap-4 bg-transparent")}
     >
       {children}
     </form>
@@ -98,7 +95,7 @@ const CreatePageOutput = ({
         </Label>
       </span>
       <span className="col-start-2 flex w-full flex-col">
-        <div className="h-[600px] p-2 w-full overflow-y-scroll rounded-md border border-input bg-transparent">
+        <div className="h-[600px] w-full overflow-y-scroll rounded-md border border-input bg-transparent p-2">
           {children}
         </div>
         <p className="text-sm text-muted-foreground">

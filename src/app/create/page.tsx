@@ -14,11 +14,7 @@ const CreatePage = () => {
     <CreatePageForm className="mt-10" onSubmit={handleSubmit}>
       <CreatePageInputArea />
       <CreatePageOutput>
-        <p>
-          Output text comes here
-
-
-        </p>
+        <p>Output text comes here</p>
       </CreatePageOutput>
     </CreatePageForm>
   );
