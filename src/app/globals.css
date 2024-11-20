@@ -2,50 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 48px; /* 100% */
-  letter-spacing: -0.576px;
-}
-
-h2 {
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 36px; /* 120% */
-  letter-spacing: -0.225px;
-}
-
-h3 {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px; /* 133.333% */
-  letter-spacing: -0.144px;
-}
-
-h4 {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 28px; /* 140% */
-  letter-spacing: -0.1px;
-}
-
-p {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px; /* 175% */
-}
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
+    --code-background: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 240 5.9% 10%;
@@ -73,6 +36,7 @@ p {
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
+    --code-background: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
@@ -93,6 +57,71 @@ p {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+  }
+
+  :root {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
+  }
+
+  p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
+  }
+  ul {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  code {
+    font-family: "Fira Code", monospace;
+    background-color: var(--code-background);
+    font-size: 14px;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+  }
+
+  h1 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 48px; /* 100% */
+    letter-spacing: -0.576px;
+  }
+
+  h2 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; /* 120% */
+    letter-spacing: -0.225px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: -0.144px;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.1px;
   }
 }
 
