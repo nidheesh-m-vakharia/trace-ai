@@ -21,7 +21,7 @@ const Error = ({
             onClick={reset}
             size={36}
           />
-          <Home onClick={() => redirect("/create")} size={36} />
+          <Home onClick={() => redirect("/")} size={36} />
         </div>
       </div>
     </div>
