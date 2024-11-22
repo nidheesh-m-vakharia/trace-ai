@@ -11,10 +11,16 @@ import { cn } from "@/lib/utils";
 
 type CreatePageInputAreaProps = {
   className?: string;
+  input: string;
+  handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isLoading: boolean;
 };
 
 const CreatePageInputArea = ({
   className,
+  input,
+  handleInputChange,
+  isLoading,
 }: CreatePageInputAreaProps): JSX.Element => {
   return (
     <>
@@ -48,6 +54,9 @@ const CreatePageInputArea = ({
           placeholder="Type your notes here."
           id="message-2"
           name="message"
+          value={input}
+          onChange={handleInputChange}
+          disabled={isLoading}
         />
         <p className="text-sm text-muted-foreground">
           Your message will be copied to the support team.
