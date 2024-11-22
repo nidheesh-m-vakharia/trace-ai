@@ -4,12 +4,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Wand2 } from "lucide-react";
 import { useChat } from "ai/react";
-import { useState } from "react";
 
 const CreatePage = () => {
-  const { messages, input, handleSubmit, handleInputChange, isLoading } =
+  const { messages, input, handleSubmit, isLoading, handleInputChange } =
     useChat();
-  const [message, setMessage] = useState(messages);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -20,10 +19,9 @@ const CreatePage = () => {
             </Label>
             <Textarea
               value={input}
-              placeholder="Type your notes here."
               onChange={handleInputChange}
+              placeholder="Type your notes here."
               disabled={isLoading}
-              className="h-[1000px] max-h-[1000px]"
               id="message-2"
             />
           </span>
@@ -32,7 +30,7 @@ const CreatePage = () => {
               Enhanced Notes
             </Label>
             <div className="col-span-2 h-full">
-              {message.map((message, index) => (
+              {messages.map((message) => (
                 <div key={message.id}>
                   <div>{message.role}</div>
                   <div>{message.content}</div>
@@ -42,7 +40,7 @@ const CreatePage = () => {
           </span>
           <span>
             <span className="flex h-fit flex-col">
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" onSubmit={handleSubmit}>
                 <Wand2 size={24} />
                 Create
               </Button>
