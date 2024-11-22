@@ -1,22 +1,35 @@
 "use client";
+import { useChat } from "ai/react";
 import {
   CreatePageForm,
   CreatePageInputArea,
   CreatePageOutput,
 } from "@/components/create-page/createPage";
+import Markdown from "react-markdown";
 
 const CreatePage = () => {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const { messages, input, handleSubmit, isLoading, handleInputChange } =
+    useChat();
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("submitting");
+    await handleSubmit(e);
   };
+
   return (
-    <CreatePageForm className="mt-10" onSubmit={handleSubmit}>
-      <CreatePageInputArea />
-      <CreatePageOutput>
-        <p>Output text comes here</p>
-      </CreatePageOutput>
-    </CreatePageForm>
+    <div>
+      <CreatePageForm className="mt-10" onSubmit={onSubmit}>
+        <CreatePageInputArea
+          input={input}
+          handleInputChange={handleInputChange}
+          isLoading={isLoading}
+        />
+        <CreatePageOutput>
+          <Markdown>{messages?.at(-1) && messages?.at(-1)?.content}</Markdown>
+        </CreatePageOutput>
+      </CreatePageForm>
+    </div>
   );
 };
 

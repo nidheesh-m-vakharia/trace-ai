@@ -331,9 +331,9 @@ classDiagram
 
 - **Problem**: High-level components were tightly coupled with low-level implementations like API calls.
 - **Solution**: Abstracted API calls into the `TextRefiner` class, which is used via dependency injection.
+
   - This decouples `CreatePage` from the specifics of the API and allows for easier testing and replacement.
 
 - **Problem**: High-level components were tightly coupled with low-level implementations like API calls.
 - **Solution**: Abstracted API calls into the `TextRefiner` class, which is used via dependency injection.
-  - This decouples `CreatePage` from the specifics of the API and allows for easier testing and replacement. 
-
+  - This decouples `CreatePage` from the specifics of the API and allows for easier testing and replacement.

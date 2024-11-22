@@ -11,10 +11,16 @@ import { cn } from "@/lib/utils";
 
 type CreatePageInputAreaProps = {
   className?: string;
+  input: string;
+  handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isLoading: boolean;
 };
 
 const CreatePageInputArea = ({
   className,
+  input,
+  handleInputChange,
+  isLoading,
 }: CreatePageInputAreaProps): JSX.Element => {
   return (
     <>
@@ -32,7 +38,7 @@ const CreatePageInputArea = ({
             <HelpCircle size={20} />
           </HoverCardTrigger>
           <HoverCardContent sideOffset={10}>
-            This is a note that will be copied to the support team.
+            Paste in your notes here and TraceAI will do the rest.
           </HoverCardContent>
         </HoverCard>
       </span>
@@ -48,10 +54,10 @@ const CreatePageInputArea = ({
           placeholder="Type your notes here."
           id="message-2"
           name="message"
+          value={input}
+          onChange={handleInputChange}
+          disabled={isLoading}
         />
-        <p className="text-sm text-muted-foreground">
-          Your message will be copied to the support team.
-        </p>
       </span>
     </>
   );
@@ -98,9 +104,6 @@ const CreatePageOutput = ({
         <div className="h-[600px] w-full overflow-y-scroll rounded-md border border-input bg-transparent p-2">
           {children}
         </div>
-        <p className="text-sm text-muted-foreground">
-          Your message will be copied to the support team.
-        </p>
       </span>
     </>
   );
