@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${inter.className}`}>
-        <main className="mx-auto max-w-[1200px]">{children}</main>
-        <Toaster />
+        <TooltipProvider>
+          <main className="mx-auto w-10/12 md:max-w-[1200px]">{children}</main>
+          <Toaster />
+        </TooltipProvider>
       </body>
     </html>
   );
