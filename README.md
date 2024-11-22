@@ -207,36 +207,31 @@ flowchart TB
 classDiagram
     %% Base Types %%
     class BaseComponent {
-        +children : ReactNode
         +render() : JSX
     }
 
     %% Page Components %%
-    %% Group Main Pages %%
     class HomePage {
-        +title : string
-        +description : string
+        -title : string
+        -description : string
+        -headerMenu : JSX
+        -footer : JSX
         +render() : JSX
-        +headerMenu : JSX
-        +footer : JSX
-        +createButtons() : void
-        +showProjectDetails() : void
         +handleButtonClick(event : MouseEvent) : void
     }
 
     class CreatePage {
-        +textInput : string
-        +refinedText : string
-        +handleInput(text : string) : void
-        +refineText(text : string) : Promise<string>
+        -textInput : string
+        -refinedText : string
+        -refiner : TextRefiner
+        +render() : JSX
         +onTextInputChange(event : ChangeEvent<HTMLInputElement>) : void
         +onRefineButtonClick(event : MouseEvent) : void
     }
 
     class NotFoundPage {
-        +errorText : string
+        -errorText : string
         +render() : JSX
-        +backToHome() : void
         +handleBackClick(event : MouseEvent) : void
     }
 
@@ -251,155 +246,94 @@ classDiagram
     }
 
     class ErrorPage {
+        -errorMessage : string
         +render() : JSX
-        +error : string
         +displayErrorMessage() : void
     }
 
-    %% API Integrations %%
-    class OpenAIApi {
-        +refineText(input : string) : Promise<string>
+    %% Business Logic %%
+    class TextRefiner {
+        +refine(input : string) : Promise<string>
         +openAiApiKey : string
     }
 
     %% UI Components %%
     class TextInput {
-        +value : string
+        -value : string
         +onChange(event : ChangeEvent<HTMLInputElement>) : void
         +props : HTMLAttributes<HTMLInputElement>
     }
 
     class Button {
-        +label : string
+        -label : string
         +onClick(event : MouseEvent) : void
         +props : HTMLButtonProps<HTMLButtonElement>
     }
 
     class Card {
-        +title : string
-        +content : JSX
+        -title : string
+        -content : JSX
         +props : HTMLDivProps<HTMLDivElement>
     }
 
     %% Relationships %%
-    BaseComponent <|-- HomePage : FC
-    BaseComponent <|-- NotFoundPage : FC
-    BaseComponent <|-- CreatePage : FC
-    BaseComponent <|-- LoginPage : FC
-    BaseComponent <|-- SignUpPage : FC
-    BaseComponent <|-- ErrorPage : FC
+    BaseComponent <|-- HomePage
+    BaseComponent <|-- CreatePage
+    BaseComponent <|-- NotFoundPage
+    BaseComponent <|-- LoginPage
+    BaseComponent <|-- SignUpPage
+    BaseComponent <|-- ErrorPage
 
     HomePage *-- Button
     HomePage *-- Card
-    NotFoundPage *-- Button
     CreatePage *-- TextInput
     CreatePage *-- Button
-    CreatePage o-- OpenAIApi
+    CreatePage o-- TextRefiner
+    NotFoundPage *-- Button
     ErrorPage *-- Card
+
 ```
 
-Below is a breakdown of the key components:
+### Explanation of Changes and SOLID Principles Applied
 
-### BaseComponent
+#### **Single Responsibility Principle (SRP)**
 
-- **Purpose**: Serves as a parent class for all main page components.
-- **Attributes**:
-  - `children: ReactNode`: Represents child components that can be rendered within the base component.
-- **Methods**:
-  - `render(): JSX`: Renders the component.
+- **Problem**: The original design combined UI rendering and business logic within page components.
+- **Solution**: Extracted the text refinement logic into a dedicated `TextRefiner` class.
+  - This separation ensures that `CreatePage` handles only rendering and UI-related functionality, while `TextRefiner` handles API integration and logic.
 
-### Page Components
+---
 
-1. **HomePage**
+#### **Open/Closed Principle (OCP)**
 
-   - **Attributes**:
-     - `title: string`: The title of the homepage.
-     - `description: string`: A brief description displayed on the homepage.
-     - `headerMenu: JSX`: The header menu component for navigation.
-     - `footer: JSX`: The footer component.
-   - **Methods**:
-     - `render(): JSX`: Renders the homepage.
-     - `createButtons(): void`: Creates buttons for user interaction.
-     - `showProjectDetails(): void`: Displays project details.
-     - `handleButtonClick(event: MouseEvent): void`: Handles button click events.
+- **Problem**: Extending components required modifying existing classes directly.
+- **Solution**: Encapsulated behavior using dependency injection.
+  - For instance, `TextRefiner` is injected into `CreatePage`, making it easier to replace or extend refinement logic without altering the `CreatePage` class.
 
-2. **CreatePage**
+---
 
-   - **Attributes**:
-     - `textInput: string`: The raw notes input by the user.
-     - `refinedText: string`: The output text after refinement.
-   - **Methods**:
-     - `handleInput(text: string): void`: Handles the input of raw notes.
-     - `refineText(text: string): Promise<string>`: Calls the AI API to refine the input text.
-     - `onTextInputChange(event: ChangeEvent<HTMLInputElement>): void`: Monitors changes in the text input field.
-     - `onRefineButtonClick(event: MouseEvent): void`: Handles the event when the refine button is clicked.
+#### **Liskov Substitution Principle (LSP)**
 
-3. **NotFoundPage**
+- **Problem**: The `BaseComponent` didn’t fully abstract shared behavior, risking inconsistent behavior for subclasses.
+- **Solution**: Standardized the `render` method across all subclasses, ensuring each can replace `BaseComponent` without unexpected behavior.
 
-   - **Attributes**:
-     - `errorText: string`: The error message displayed when a page is not found.
-   - **Methods**:
-     - `render(): JSX`: Renders the not found page.
-     - `backToHome(): void`: Navigates back to the homepage.
-     - `handleBackClick(event: MouseEvent): void`: Handles the back button click event.
+---
 
-4. **LoginPage**
+#### **Interface Segregation Principle (ISP)**
 
-   - **Methods**:
-     - `render(): JSX`: Renders the login page.
-     - `handleSignInClick(event: MouseEvent): void`: Handles sign-in button click events.
+- **Problem**: UI components like `TextInput` and `Button` were overburdened with generic props.
+- **Solution**: Clarified and minimized attributes to the specific use case.
+  - `TextInput` and `Button` now implement only their respective event handlers and specific attributes.
 
-5. **SignUpPage**
+---
 
-   - **Methods**:
-     - `render(): JSX`: Renders the sign-up page.
-     - `handleSignUpClick(event: MouseEvent): void`: Handles sign-up button click events.
+#### **Dependency Inversion Principle (DIP)**
 
-6. **ErrorPage**
-   - **Attributes**:
-     - `error: string`: The error message to be displayed.
-   - **Methods**:
-     - `render(): JSX`: Renders the error page.
-     - `displayErrorMessage(): void`: Displays the specific error message.
+- **Problem**: High-level components were tightly coupled with low-level implementations like API calls.
+- **Solution**: Abstracted API calls into the `TextRefiner` class, which is used via dependency injection.
 
-### API Integrations
+  - This decouples `CreatePage` from the specifics of the API and allows for easier testing and replacement.
 
-- **OpenAIApi**
-  - **Attributes**:
-    - `openAiApiKey: string`: The API key for authenticating with the OpenAI service.
-  - **Methods**:
-    - `refineText(input: string): Promise<string>`: Sends the input text to the OpenAI API for refinement and returns the processed text.
-
-### UI Components
-
-1. **TextInput**
-
-   - **Attributes**:
-     - `value: string`: The current value of the text input.
-   - **Methods**:
-     - `onChange(event: ChangeEvent<HTMLInputElement>): void`: Handles changes in the text input field.
-     - `props: HTMLAttributes<HTMLInputElement>`: Props for the input element.
-
-2. **Button**
-
-   - **Attributes**:
-     - `label: string`: The label displayed on the button.
-   - **Methods**:
-     - `onClick(event: MouseEvent): void`: Handles button click events.
-     - `props: HTMLButtonProps<HTMLButtonElement>`: Props for the button element.
-
-3. **Card**
-   - **Attributes**:
-     - `title: string`: The title of the card.
-     - `content: JSX`: The content to be displayed in the card.
-   - **Methods**:
-     - `props: HTMLDivProps<HTMLDivElement>`: Props for the card component.
-
-### Relationships
-
-- **Inheritance**: All page components (e.g., `HomePage`, `CreatePage`, `LoginPage`, etc.) inherit from `BaseComponent`, ensuring a consistent structure.
-- **Composition**:
-  - `HomePage` is composed of `Button` and `Card` components, allowing for interactive elements.
-  - `CreatePage` uses `TextInput` for user input and `Button` for actions.
-  - `CreatePage` also interacts with the `OpenAIApi` to perform text refinement.
-  - `NotFoundPage` and `ErrorPage` also utilize `Button` and `Card` for their layouts.
+- **Problem**: High-level components were tightly coupled with low-level implementations like API calls.
+- **Solution**: Abstracted API calls into the `TextRefiner` class, which is used via dependency injection.
+  - This decouples `CreatePage` from the specifics of the API and allows for easier testing and replacement.
