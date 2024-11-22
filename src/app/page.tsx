@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <h1 className="mt-10 dark:text-white">Trace AI</h1>
-      <p className="mb-4 mt-6 dark:text-white text-xl leading-8 tracking-wide">
+      <p className="mb-4 mt-6 text-xl leading-8 tracking-wide dark:text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -21,8 +21,8 @@ export default function Home() {
         height={100}
         className="mx-auto w-full"
       />
-      <div className="mt-6 text-center pb-10 pt-0">
-        <button className="bg-pink-200 hover:bg-pink-300 font-semibold rounded-md">
+      <div className="mt-6 pb-10 pt-0 text-center">
+        <button className="rounded-md bg-pink-200 font-semibold hover:bg-pink-300">
           Create!
         </button>
       </div>
