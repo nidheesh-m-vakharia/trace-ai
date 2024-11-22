@@ -1,5 +1,9 @@
+"use cilent";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
+import CreateButton from "@/components/createButton";
 
 export default function Home() {
   return (
@@ -14,18 +18,16 @@ export default function Home() {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
+      <div className="mt-6 pb-10 pt-0 text-center">
+        <CreateButton />
+      </div>
       <img
         src="https://www.shutterstock.com/shutterstock/photos/2304213093/display_1500/stock-vector-winking-face-emoji-sticker-yellow-face-with-winking-eye-black-outline-cute-sticker-on-pink-2304213093.jpg" // add a new file this will be added to public
-        alt="smile logo" //
+        alt="smile logo"
         width={200}
         height={100}
         className="mx-auto w-full"
       />
-      <div className="mt-6 pb-10 pt-0 text-center">
-        <button className="rounded-md bg-pink-200 font-semibold hover:bg-pink-300">
-          Create!
-        </button>
-      </div>
     </div>
   );
 }
