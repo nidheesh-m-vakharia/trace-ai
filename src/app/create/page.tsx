@@ -5,6 +5,7 @@ import {
   CreatePageInputArea,
   CreatePageOutput,
 } from "@/components/create-page/createPage";
+import Markdown from "react-markdown";
 
 const CreatePage = () => {
   const { messages, input, handleSubmit, isLoading, handleInputChange } =
@@ -25,13 +26,7 @@ const CreatePage = () => {
           isLoading={isLoading}
         />
         <CreatePageOutput>
-          <p> output</p>
-          {messages.map((message) => (
-            <div key={message.id}>
-              <div>{message.role}</div>
-              <div>{message.content}</div>
-            </div>
-          ))}
+          <Markdown>{messages?.at(-1) && messages?.at(-1)?.content}</Markdown>
         </CreatePageOutput>
       </CreatePageForm>
     </div>
