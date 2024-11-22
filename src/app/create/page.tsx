@@ -3,48 +3,42 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Wand2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { useChat } from "ai/react";
+import { useState } from "react";
 
 const CreatePage = () => {
-  const { toast } = useToast();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast({
-      title: "Note created",
-      description: (
-        <p>
-          {e.currentTarget
-            .querySelector("textarea")
-            ?.value.replace(/\n/g, "<br>")}
-        </p>
-      ),
-    });
-  };
+  const { messages, input, handleSubmit, handleInputChange, isLoading } =
+    useChat();
+  const [message, setMessage] = useState(messages);
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="grid h-lvh w-full grid-cols-3 place-content-center gap-3">
           <span className="flex flex-col">
             <Label htmlFor="message-2" className="font-bold">
-              Your Text
+              Your Notes
             </Label>
             <Textarea
-              className="h-[1000px] max-h-[1000px]"
+              value={input}
               placeholder="Type your notes here."
+              onChange={handleInputChange}
+              disabled={isLoading}
+              className="h-[1000px] max-h-[1000px]"
               id="message-2"
             />
-            <p className="text-sm text-muted-foreground">
-              Your message will be copied to the support team.
-            </p>
           </span>
           <span className="col-span-2 flex flex-col">
             <Label htmlFor="message-2" className="font-bold">
-              Your Text
+              Enhanced Notes
             </Label>
-            <div className="col-span-2 h-full bg-gray-300"></div>
-            <p className="text-sm text-muted-foreground">
-              Your message will be copied to the support team.
-            </p>
+            <div className="col-span-2 h-full">
+              {message.map((message, index) => (
+                <div key={message.id}>
+                  <div>{message.role}</div>
+                  <div>{message.content}</div>
+                </div>
+              ))}
+            </div>
           </span>
           <span>
             <span className="flex h-fit flex-col">
@@ -56,7 +50,7 @@ const CreatePage = () => {
           </span>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
