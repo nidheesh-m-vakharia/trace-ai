@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <div>
-      <h1 className="mt-10">Trace AI</h1>
-      <p className="mb-4 mt-6 text-xl leading-8 tracking-wide">
+      <h1 className="mt-10 dark:text-white">Trace AI</h1>
+      <p className="mb-4 mt-6 dark:text-white text-xl leading-8 tracking-wide">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -21,6 +21,11 @@ export default function Home() {
         height={100}
         className="mx-auto w-full"
       />
+      <div className="mt-6 text-center pb-10 pt-0">
+        <button className="bg-pink-200 hover:bg-pink-300 font-semibold rounded-md">
+          Create!
+        </button>
+      </div>
     </div>
   );
 }
