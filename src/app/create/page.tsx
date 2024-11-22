@@ -1,7 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Wand2 } from "lucide-react";
 import { useChat } from "ai/react";
 import {
   CreatePageForm,
