@@ -29,6 +29,7 @@
     "dotenv": "^16.4.5",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "is-set": "^2.0.3",
     "lucide-react": "^0.454.0",
     "next": "^15.0.2",
     "openai": "^4.72.0",
