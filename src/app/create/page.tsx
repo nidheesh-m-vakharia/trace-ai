@@ -17,6 +17,8 @@ const CreatePage = () => {
     await handleSubmit(e);
   };
 
+  const output = (messages?.at(-1) && messages?.at(-1)?.content) ?? "";
+
   return (
     <div>
       <CreatePageForm className="mt-10" onSubmit={onSubmit}>
@@ -25,8 +27,10 @@ const CreatePage = () => {
           handleInputChange={handleInputChange}
           isLoading={isLoading}
         />
-        <CreatePageOutput>
-          <Markdown>{messages?.at(-1) && messages?.at(-1)?.content}</Markdown>
+        <CreatePageOutput text={output}>
+          <article className="prose prose-xl">
+            <Markdown>{messages?.at(-1) && messages?.at(-1)?.content}</Markdown>
+          </article>
         </CreatePageOutput>
       </CreatePageForm>
     </div>

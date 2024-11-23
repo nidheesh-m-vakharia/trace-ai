@@ -39,10 +39,12 @@
     "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-fluid-type": "^2.0.6",
     "typescript-eslint": "^8.12.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

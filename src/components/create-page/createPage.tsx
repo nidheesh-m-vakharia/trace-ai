@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Files } from "lucide-react";
 import {
   HoverCard,
   HoverCardTrigger,
@@ -8,6 +9,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Wand2, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useChat } from "ai/react";
 
 type CreatePageInputAreaProps = {
   className?: string;
@@ -30,7 +32,7 @@ const CreatePageInputArea = ({
           "col-start-1 row-start-1 flex w-full flex-row items-center justify-between",
         )}
       >
-        <Label htmlFor="message-2" className="font-bold">
+        <Label htmlFor="message-2" className="text-[2vw] font-bold">
           Notes
         </Label>
         <HoverCard>
@@ -50,7 +52,7 @@ const CreatePageInputArea = ({
       </span>
       <span className="col-start-1 row-start-2 flex w-full flex-col">
         <Textarea
-          className="h-[600px] resize-none shadow-none"
+          className="h-[90vh] resize-none text-[1vw] shadow-none"
           placeholder="Type your notes here."
           id="message-2"
           name="message"
@@ -87,21 +89,34 @@ const CreatePageForm = ({
 type CreatePageOutputProps = {
   children: React.ReactNode;
   className?: string;
+  text: string;
 };
 
 const CreatePageOutput = ({
   children,
   className,
+  text,
 }: CreatePageOutputProps): JSX.Element => {
   return (
     <>
-      <span className={cn(className, "col-start-2 my-auto w-full")}>
-        <Label htmlFor="message-2" className="font-bold">
+      <span
+        className={cn(
+          className,
+          "col-start-2 my-auto flex w-full justify-between",
+        )}
+      >
+        <Label htmlFor="message-2" className="text-[2vw] font-bold">
           Enhanced Notes
         </Label>
+        <button
+          className="mt-1 rounded-md p-1 hover:bg-gray-100"
+          onClick={() => navigator.clipboard.writeText(text)}
+        >
+          <Files size={20} />
+        </button>
       </span>
       <span className="col-start-2 flex w-full flex-col">
-        <div className="h-[600px] w-full overflow-y-scroll rounded-md border border-input bg-transparent p-2">
+        <div className="h-[90vh] w-full overflow-y-scroll rounded-md border border-input bg-transparent p-2">
           {children}
         </div>
       </span>
