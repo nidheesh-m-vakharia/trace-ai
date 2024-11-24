@@ -4,6 +4,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,13 +29,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased ${inter.className}`}>
-        <TooltipProvider>
-          <main className="mx-auto w-10/12 md:max-w-[1200px]">{children}</main>
-          <Toaster />
-        </TooltipProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`antialiased ${inter.className}`}>
+          <TooltipProvider>
+            <main className="mx-auto w-10/12 md:max-w-[1200px]">
+              <Navbar />
+              {children}
+            </main>
+            <Toaster />
+          </TooltipProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
