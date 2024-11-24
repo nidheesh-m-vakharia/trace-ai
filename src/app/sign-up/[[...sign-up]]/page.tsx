@@ -14,13 +14,13 @@ import { Icons } from "@/components/ui/icons";
 
 export default function SignUpPage() {
   return (
-    <div className="grid w-full h-lvh grow items-center sm:justify-center">
+    <div className="grid h-lvh w-full grow items-center sm:justify-center">
       <SignUp.Root>
         <Clerk.Loading>
           {(isGlobalLoading) => (
             <>
               <SignUp.Step name="start">
-                <Card className="md:w-full w-96">
+                <Card className="w-96 md:w-full">
                   <CardHeader>
                     <CardTitle className="mb-3">
                       <h1>Create your account</h1>

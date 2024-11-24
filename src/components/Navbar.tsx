@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton,  UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 const Navbar = () => {
   return (
     <nav>
