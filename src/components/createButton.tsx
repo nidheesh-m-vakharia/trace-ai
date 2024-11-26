@@ -1,10 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const CreateButton = () => {
-  return <Button onClick={() => redirect("/create")}>Create!</Button>;
+  const router = useRouter();
+
+  const goToCreate = () => {
+    router.push("/create");
+  };
+
+  return <Button onClick={goToCreate}>Create!</Button>;
 };
 
 export default CreateButton;
