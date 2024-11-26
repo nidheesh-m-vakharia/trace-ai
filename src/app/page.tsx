@@ -1,8 +1,5 @@
-"use cilent";
+"use client";
 
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
 import CreateButton from "@/components/createButton";
 
 export default function Home() {
