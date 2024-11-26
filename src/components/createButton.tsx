@@ -8,9 +8,9 @@ const CreateButton = () => {
 
   const goToCreate = () => {
     router.push("/create");
-  }
+  };
 
-  return <Button onClick={goToCreate} >Create!</Button>;
+  return <Button onClick={goToCreate}>Create!</Button>;
 };
 
 export default CreateButton;
