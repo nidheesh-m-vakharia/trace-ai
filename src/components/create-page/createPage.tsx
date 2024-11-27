@@ -36,10 +36,10 @@ const CreatePageInputArea = ({
         </Label>
       </span>
 
-      <span className="col-start-1 row-start-2 flex w-full flex-col mb-10">
+      <span className="col-start-1 row-start-2 mb-10 flex w-full flex-col">
         <TextareaAutosize
           autoFocus={true}
-          className="text-[1vw] shadow-none resize-none outline-none snap-center mb-[10vh]"
+          className="mb-[10vh] resize-none snap-center text-[1vw] shadow-none outline-none"
           placeholder="Type your notes here."
           id="message-2"
           name="message"
@@ -48,16 +48,14 @@ const CreatePageInputArea = ({
           disabled={isLoading}
         />
       </span>
-      <div className="top-3/4  absolute grid grid-cols-1">
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
-        <Button type="submit" className="flex items-center">
-          <Wand2 size={24} />
-          Create
-        </Button>
+      <div className="absolute top-3/4 grid grid-cols-1">
+        <div className="fixed bottom-0 left-1/2 mb-4 -translate-x-1/2 transform">
+          <Button type="submit" className="flex items-center">
+            <Wand2 size={24} />
+            Create
+          </Button>
+        </div>
       </div>
-         
-      </div>
-     
     </>
   );
 };
@@ -110,7 +108,7 @@ const CreatePageOutput = ({
         </button>
       </span>
       <span className="col-start-2 flex w-full flex-col">
-        <div className="w-full rounded-md bg-transparent p-2 h-fill mb-[10vh] ">
+        <div className="h-fill mb-[10vh] w-full rounded-md bg-transparent p-2">
           {children}
         </div>
       </span>
