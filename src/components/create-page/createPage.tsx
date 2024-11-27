@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Files } from "lucide-react";
 import {
   HoverCard,
@@ -9,7 +8,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Wand2, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useChat } from "ai/react";
+import TextareaAutosize from "react-textarea-autosize";
 
 type CreatePageInputAreaProps = {
   className?: string;
@@ -35,24 +34,12 @@ const CreatePageInputArea = ({
         <Label htmlFor="message-2" className="text-[2vw] font-bold">
           Notes
         </Label>
-        <HoverCard>
-          <HoverCardTrigger className="rounded-md p-1 hover:bg-gray-100">
-            <HelpCircle size={20} />
-          </HoverCardTrigger>
-          <HoverCardContent sideOffset={10}>
-            Paste in your notes here and TraceAI will do the rest.
-          </HoverCardContent>
-        </HoverCard>
       </span>
-      <span className="col-start-1 row-start-3 flex h-fit w-full flex-col">
-        <Button type="submit">
-          <Wand2 size={24} />
-          Create
-        </Button>
-      </span>
-      <span className="col-start-1 row-start-2 flex w-full flex-col">
-        <Textarea
-          className="h-[90vh] resize-none text-[1vw] shadow-none"
+
+      <span className="col-start-1 row-start-2 flex w-full flex-col mb-10">
+        <TextareaAutosize
+          autoFocus={true}
+          className="text-[1vw] shadow-none resize-none outline-none snap-center mb-[10vh]"
           placeholder="Type your notes here."
           id="message-2"
           name="message"
@@ -61,6 +48,16 @@ const CreatePageInputArea = ({
           disabled={isLoading}
         />
       </span>
+      <div className="top-3/4  absolute grid grid-cols-1">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-4 ">
+        <Button type="submit" className="flex items-center">
+          <Wand2 size={24} />
+          Create
+        </Button>
+      </div>
+         
+      </div>
+     
     </>
   );
 };
@@ -102,12 +99,9 @@ const CreatePageOutput = ({
       <span
         className={cn(
           className,
-          "col-start-2 my-auto flex w-full justify-between",
+          "col-start-3 my-auto flex w-full justify-between",
         )}
       >
-        <Label htmlFor="message-2" className="text-[2vw] font-bold">
-          Enhanced Notes
-        </Label>
         <button
           className="mt-1 rounded-md p-1 hover:bg-gray-100"
           onClick={() => navigator.clipboard.writeText(text)}
@@ -116,7 +110,7 @@ const CreatePageOutput = ({
         </button>
       </span>
       <span className="col-start-2 flex w-full flex-col">
-        <div className="h-[90vh] w-full overflow-y-scroll rounded-md border border-input bg-transparent p-2">
+        <div className="w-full rounded-md bg-transparent p-2 h-fill mb-[10vh] ">
           {children}
         </div>
       </span>

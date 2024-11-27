@@ -21,7 +21,7 @@ const CreatePage = () => {
 
   return (
     <div>
-      <CreatePageForm className="mt-10" onSubmit={onSubmit}>
+      <CreatePageForm className="mt-10 -mb-10" onSubmit={onSubmit}>
         <CreatePageInputArea
           input={input}
           handleInputChange={handleInputChange}
