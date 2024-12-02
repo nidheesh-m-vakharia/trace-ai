@@ -24,39 +24,30 @@ const CreatePageInputArea = ({
   isLoading,
 }: CreatePageInputAreaProps): JSX.Element => {
   return (
-    <>
-      <span
-        className={cn(
-          className,
-          "col-start-1 row-start-1 flex w-full flex-row items-center justify-between",
-        )}
-      >
-        <Label htmlFor="message-2" className="text-[2vw] font-bold">
-          Notes
-        </Label>
-      </span>
-
-      <span className="col-start-1 row-start-2 mb-10 flex w-full flex-col">
-        <TextareaAutosize
-          autoFocus={true}
-          className="mb-[10vh] resize-none snap-center text-[1vw] shadow-none outline-none"
-          placeholder="Type your notes here."
-          id="message-2"
-          name="message"
-          value={input}
-          onChange={handleInputChange}
-          disabled={isLoading}
-        />
-      </span>
-      <div className="absolute top-3/4 grid grid-cols-1">
-        <div className="fixed bottom-0 left-1/2 mb-4 -translate-x-1/2 transform">
-          <Button type="submit" className="flex items-center">
-            <Wand2 size={24} />
-            Create
-          </Button>
+    <div className="overflow-x-hidden">
+      <>
+        <span className="col-start-1 row-start-1 mb-10 flex w-full flex-col">
+          <TextareaAutosize
+            autoFocus={true}
+            className="mb-[10vh] resize-none snap-center text-lg shadow-none outline-none"
+            placeholder="Type your notes here."
+            id="message-2"
+            name="message"
+            value={input}
+            onChange={handleInputChange}
+            disabled={isLoading}
+          />
+        </span>
+        <div className="absolute top-3/4 grid grid-cols-1">
+          <div className="fixed bottom-0 left-1/2 mb-4 -translate-x-1/2 transform">
+            <Button type="submit" className="flex items-center">
+              <Wand2 size={24} />
+              Create
+            </Button>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </div>
   );
 };
 
@@ -84,31 +75,16 @@ const CreatePageForm = ({
 type CreatePageOutputProps = {
   children: React.ReactNode;
   className?: string;
-  text: string;
 };
 
 const CreatePageOutput = ({
   children,
   className,
-  text,
 }: CreatePageOutputProps): JSX.Element => {
   return (
     <>
-      <span
-        className={cn(
-          className,
-          "col-start-3 my-auto flex w-full justify-between",
-        )}
-      >
-        <button
-          className="mt-1 rounded-md p-1 hover:bg-gray-100"
-          onClick={() => navigator.clipboard.writeText(text)}
-        >
-          <Files size={20} />
-        </button>
-      </span>
       <span className="col-start-2 flex w-full flex-col">
-        <div className="h-fill mb-[10vh] w-full rounded-md bg-transparent p-2">
+        <div className="h-fill mb-[10vh] rounded-md bg-transparent p-2">
           {children}
         </div>
       </span>
