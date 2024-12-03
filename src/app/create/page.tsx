@@ -22,34 +22,38 @@ const CreatePage = () => {
   const output = (messages?.at(-1) && messages?.at(-1)?.content) ?? "";
 
   return (
-    <div className="mb-5 mt-10">
-      <div className="grid grid-cols-2">
-        <Label htmlFor="message-2" className="text-lg font-bold">
-          Notes
-        </Label>
-        <div className="justify-self-end">
-          <button
-            className="mt-1 rounded-md p-1 hover:bg-gray-100"
-            onClick={() => navigator.clipboard.writeText(output)}
-          >
-            <Files size={15} />
-          </button>
+    <div className="mb-5 mt-10 flex justify-center">
+      <div className="w-4/5">
+        <div className="grid grid-cols-2">
+          <Label htmlFor="message-2" className="text-[50px] font-bold">
+            Notes
+          </Label>
+          <div className="justify-self-end">
+            <button
+              className="mt-1 rounded-md p-1 hover:bg-gray-100"
+              onClick={() => navigator.clipboard.writeText(output)}
+            >
+              <Files size={20} />
+            </button>
+          </div>
+        </div>
+        <div className="">
+          <CreatePageForm className="-mb-10 mt-10" onSubmit={onSubmit}>
+            <CreatePageInputArea
+              input={input}
+              handleInputChange={handleInputChange}
+              isLoading={isLoading}
+            />
+            <CreatePageOutput>
+              <article className="prose prose-xl">
+                <Markdown className="text-[1vw]">
+                  {messages?.at(-1) && messages?.at(-1)?.content}
+                </Markdown>
+              </article>
+            </CreatePageOutput>
+          </CreatePageForm>
         </div>
       </div>
-      <CreatePageForm className="-mb-10 mt-10" onSubmit={onSubmit}>
-        <CreatePageInputArea
-          input={input}
-          handleInputChange={handleInputChange}
-          isLoading={isLoading}
-        />
-        <CreatePageOutput>
-          <article className="prose prose-xl">
-            <Markdown className="text-[1vw]">
-              {messages?.at(-1) && messages?.at(-1)?.content}
-            </Markdown>
-          </article>
-        </CreatePageOutput>
-      </CreatePageForm>
     </div>
   );
 };
