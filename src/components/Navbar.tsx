@@ -10,14 +10,15 @@ const Navbar = () => {
 
   const TitleWithIcon = () => (
     <div className="flex items-center gap-2">
-      <Home className="w-6 h-6 text-gray-600" aria-hidden="true" /> {/* Icon */}
-      <h1 className="text-lg font-bold text-gray-800">trace.ai</h1> {/* Title */}
+      <Home className="h-6 w-6 text-gray-600" aria-hidden="true" /> {/* Icon */}
+      <h1 className="text-lg font-bold text-gray-800">trace.ai</h1>{" "}
+      {/* Title */}
     </div>
   );
 
   return (
     <nav
-      className="flex h-16 items-center justify-between px-4 shadow-md bg-white flex-wrap"
+      className="flex h-16 flex-wrap items-center justify-between bg-white px-4 shadow-md"
       aria-label="Main Navigation"
     >
       {/* Logo and Title */}
