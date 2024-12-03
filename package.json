@@ -40,6 +40,7 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "react-textarea-autosize": "^8.5.5",
+    "react-type-animation": "^3.2.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-fluid-type": "^2.0.6",
