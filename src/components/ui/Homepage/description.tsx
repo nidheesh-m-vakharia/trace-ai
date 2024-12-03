@@ -1,6 +1,6 @@
 const Description = () => {
   return (
-    <div className="flex w-screen flex-col items-center">
+    <div className="flex w-full flex-col items-center">
       <div className="w-2/5">
         <div className="mb-[1vw] text-[3vw] font-bold">Powered by OpenAI</div>
       </div>
