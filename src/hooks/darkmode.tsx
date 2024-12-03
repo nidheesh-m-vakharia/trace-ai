@@ -39,7 +39,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const toggleDarkMode = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  }
+  };
 
   return (
     <ThemeContext.Provider
