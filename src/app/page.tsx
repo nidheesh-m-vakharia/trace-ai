@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default function Home() {
   return (
     <div>
-      <div className="h-screen w-screen">
+      <div className="h-screen w-full">
         <Title />
         <div className="flex justify-center">
           <Button size="lg" onClick={() => redirect("/create")}>
