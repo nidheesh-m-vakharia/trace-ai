@@ -1,12 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Files } from "lucide-react";
-import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from "@/components/ui/hover-card";
-import { Wand2, HelpCircle } from "lucide-react";
+import { Wand2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import TextareaAutosize from "react-textarea-autosize";
 
@@ -24,12 +17,12 @@ const CreatePageInputArea = ({
   isLoading,
 }: CreatePageInputAreaProps): JSX.Element => {
   return (
-    <div className="overflow-x-hidden">
+    <div className={cn(className, "overflow-x-hidden")}>
       <>
         <span className="col-start-1 row-start-1 mb-10 flex w-full flex-col">
           <TextareaAutosize
             autoFocus={true}
-            className="mb-[10vh] resize-none snap-center text-lg shadow-none outline-none"
+            className="mb-[10vh] resize-none snap-center bg-transparent text-lg tracking-wider shadow-none outline-none"
             placeholder="Type your notes here."
             id="message-2"
             name="message"
