@@ -45,9 +45,9 @@ const CreatePage = () => {
               isLoading={isLoading}
             />
             <CreatePageOutput>
-              <article className="prose prose-xl">
-                <Markdown className="text-[1vw]">
-                  {messages?.at(-1) && messages?.at(-1)?.content}
+              <article className="prose prose-xl ">
+                <Markdown className="">
+                  {output}
                 </Markdown>
               </article>
             </CreatePageOutput>

@@ -4,14 +4,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
+import { ClerkProvider } from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
 import Navbar from "@/components/Navbar";
+import { ThemeContextProvider, ThemeProvider } from "@/hooks/darkmode";
+import { useContext } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,18 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`antialiased ${inter.className}`}>
-          <TooltipProvider>
-            <main className="mx-auto p-4">
-              <Navbar />
-              {children}
-            </main>
-            <Toaster />
-          </TooltipProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider>
+          <ClerkProvider>
+            <TooltipProvider>
+              <main className="mx-auto p-4">
+                <Navbar />
+                {children}
+              </main>
+              <Toaster />
+            </TooltipProvider>
+          </ClerkProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

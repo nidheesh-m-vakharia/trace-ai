@@ -9,6 +9,56 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "var(--foreground)",
+            a: {
+              color: "var(--primary)",
+              "&:hover": {
+                color: "var(--primary-foreground)",
+              },
+            },
+            h1: {
+              color: "var(--foreground)",
+            },
+            h2: {
+              color: "var(--foreground)",
+            },
+            h3: {
+              color: "var(--foreground)",
+            },
+            h4: {
+              color: "var(--foreground)",
+            },
+            h5: {
+              color: "var(--foreground)",
+            },
+            h6: {
+              color: "var(--foreground)",
+            },
+            strong: {
+              color: "var(--foreground)",
+            },
+            blockquote: {
+              color: "var(--foreground)",
+            },
+            code: {
+              color: "var(--foreground)",
+            },
+            pre: {
+              color: "var(--foreground)",
+            },
+            figcaption: {
+              color: "var(--foreground)",
+            },
+            hr: {
+              borderColor: "var(--border)",
+            },
+
+          },
+        },
+      },
       fontFamily: {
         sans: "var(--font-inter)",
         serif: "var(--font-serif)",
@@ -68,19 +118,19 @@ const config: Config = {
     require("@tailwindcss/typography"),
     require("tailwindcss-fluid-type")({
       settings: {
-        fontSizeMin: 1.125, // 1.125rem === 18px
-        fontSizeMax: 1.25, // 1.25rem === 20px
-        ratioMin: 1.125, // Multiplicator Min
-        ratioMax: 1.2, // Multiplicator Max
-        screenMin: 20, // 20rem === 320px
-        screenMax: 96, // 96rem === 1536px
-        unit: "rem", // default is rem but it's also possible to use 'px'
-        prefix: "", // set a prefix to use it alongside the default font sizes
-        extendValues: true, // When you set extendValues to true it will extend the default values. Set it to false to overwrite the values.
+        fontSizeMin: 1.125,
+        fontSizeMax: 1.25,
+        ratioMin: 1.125,
+        ratioMax: 1.2,
+        screenMin: 20,
+        screenMax: 96,
+        unit: "rem",
+        prefix: "",
+        extendValues: true,
       },
-      // Creates the text-xx classes
-      // This are the default settings and analog to the tailwindcss defaults
-      // Each `lineHeight` is set unitless and we think that's the way to go especially in context with fluid type.
+
+
+
       values: {
         xs: [-2, 1.6],
         sm: [-1, 1.6],

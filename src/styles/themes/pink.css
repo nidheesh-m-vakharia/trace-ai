@@ -1,0 +1,56 @@
+
+  .html[data-theme="pink"] {
+    --background: 330 100% 98%;
+    --foreground: 330 80% 30%;
+    --card: 330 100% 97%;
+    --card-foreground: 330 80% 30%;
+    --code-background: 330 100% 95%;
+    --popover: 330 100% 98%;
+    --popover-foreground: 330 80% 30%;
+    --primary: 330 75% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 330 50% 80%;
+    --secondary-foreground: 330 90% 30%;
+    --muted: 330 50% 90%;
+    --muted-foreground: 330 80% 40%;
+    --accent: 330 60% 75%;
+    --accent-foreground: 330 90% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 330 80% 90%;
+    --input: 330 60% 90%;
+    --ring: 330 90% 50%;
+    --chart-1: 330 70% 60%;
+    --chart-2: 330 60% 55%;
+    --chart-3: 330 50% 50%;
+    --chart-4: 330 40% 60%;
+    --chart-5: 330 80% 55%;
+
+    .dark {
+      --background: 330 80% 30%;
+      --foreground: 0 0% 98%;
+      --card: 330 80% 20%;
+      --card-foreground: 0 0% 98%;
+      --code-background: 330 90% 15%;
+      --popover: 330 80% 30%;
+      --popover-foreground: 0 0% 98%;
+      --primary: 0 0% 98%;
+      --primary-foreground: 330 80% 30%;
+      --secondary: 330 80% 40%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 330 80% 50%;
+      --muted-foreground: 330 60% 60%;
+      --accent: 330 70% 40%;
+      --accent-foreground: 0 0% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 330 80% 40%;
+      --input: 330 70% 50%;
+      --ring: 330 90% 40%;
+      --chart-1: 330 70% 60%;
+      --chart-2: 330 60% 55%;
+      --chart-3: 330 50% 50%;
+      --chart-4: 330 40% 60%;
+      --chart-5: 330 80% 55%;
+    }
+  }

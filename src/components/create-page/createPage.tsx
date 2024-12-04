@@ -29,7 +29,7 @@ const CreatePageInputArea = ({
         <span className="col-start-1 row-start-1 mb-10 flex w-full flex-col">
           <TextareaAutosize
             autoFocus={true}
-            className="mb-[10vh] resize-none snap-center text-lg shadow-none outline-none"
+            className="mb-[10vh] bg-transparent resize-none snap-center text-lg shadow-none outline-none"
             placeholder="Type your notes here."
             id="message-2"
             name="message"
