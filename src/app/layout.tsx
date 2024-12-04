@@ -26,7 +26,7 @@ export default function RootLayout({
         <TooltipProvider>
           <body className={`antialiased ${inter.className}`}>
             <ThemeProvider>
-              <main className="mx-auto p-4 max-w-[1100px] w-11/12">
+              <main className="mx-auto w-11/12 max-w-[1100px] p-4">
                 <Navbar />
                 {children}
               </main>
