@@ -1,13 +1,10 @@
 "use client";
 import { useState, useEffect, createContext, useContext } from "react";
 
-type validFont = "sans" | "serif" | "mono";
 type validTheme = "mono" | "github" | "pink" | "solarized" | "dracula";
 type validMode = "light" | "dark";
 
 type themeContextProps = {
-  font: validFont;
-  fontHandler: (font: validFont) => void;
   theme: validTheme;
   themeHandler: (theme: validTheme) => void;
   mode: validMode;
@@ -30,14 +27,9 @@ export const ThemeContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [font, setFont] = useState<validFont>("mono");
   const [theme, setTheme] = useState<validTheme>("solarized");
   const [mode, setMode] = useState<validMode>("light");
   const [isMounted, setIsMounted] = useState(false);
-
-  const fontHandler = (font: validFont) => {
-    setFont(font);
-  };
 
   const themeHandler = (theme: validTheme) => {
     setTheme(theme);
@@ -48,12 +40,13 @@ export const ThemeContextProvider = ({
   };
 
   const toggleDarkMode = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    modeHandler((mode === "light" ? "dark" : "light") as validMode);
   };
 
   useEffect(() => {
+    document.documentElement.className = `${theme}-${mode}`;
     setIsMounted(true);
-  }, [theme, mode, font]);
+  }, [theme, mode]);
 
   if (!isMounted) return null;
 
@@ -61,8 +54,6 @@ export const ThemeContextProvider = ({
     <ThemeContext.Provider
       value={
         {
-          font,
-          fontHandler,
           theme,
           themeHandler,
           mode,
@@ -77,14 +68,5 @@ export const ThemeContextProvider = ({
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <ThemeContextProvider>
-      <WithThemeClass>{children}</WithThemeClass>
-    </ThemeContextProvider>
-  );
-};
-
-const WithThemeClass = ({ children }: { children: React.ReactNode }) => {
-  const { theme, mode } = useTheme();
-  return <div className={`${theme}-${mode}`} id="themeWindow">{children}</div>;
+  return <ThemeContextProvider>{children}</ThemeContextProvider>;
 };

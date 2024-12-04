@@ -16,7 +16,7 @@ const CreatePage = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("submitting");
-    await handleSubmit(e);
+    handleSubmit(e);
   };
 
   const output = (messages?.at(-1) && messages?.at(-1)?.content) ?? "";
@@ -45,10 +45,8 @@ const CreatePage = () => {
               isLoading={isLoading}
             />
             <CreatePageOutput>
-              <article className="prose prose-xl ">
-                <Markdown className="">
-                  {output}
-                </Markdown>
+              <article className="prose prose-xl">
+                <Markdown className="">{output}</Markdown>
               </article>
             </CreatePageOutput>
           </CreatePageForm>

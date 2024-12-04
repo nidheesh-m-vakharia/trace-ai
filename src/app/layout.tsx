@@ -6,13 +6,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ClerkProvider } from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
 import Navbar from "@/components/Navbar";
-import { ThemeContextProvider, ThemeProvider } from "@/hooks/darkmode";
-import { useContext } from "react";
+import { ThemeProvider } from "@/context/theme";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+const inter = Inter();
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,20 +21,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider>
-          <ClerkProvider>
-            <TooltipProvider>
+    <html lang="en" >
+      <ClerkProvider>
+        <TooltipProvider>
+          <body className={`antialiased ${inter.className}`}>
+            <ThemeProvider>
               <main className="mx-auto p-4">
                 <Navbar />
                 {children}
               </main>
               <Toaster />
-            </TooltipProvider>
-          </ClerkProvider>
-        </ThemeProvider>
-      </body>
+            </ThemeProvider>
+          </body>
+        </TooltipProvider>
+      </ClerkProvider>
     </html>
   );
 }

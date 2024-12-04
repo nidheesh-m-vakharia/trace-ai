@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -315,7 +317,6 @@
 }
 
 @layer base {
-
   html {
     font-size: 16px;
     font-style: normal;
@@ -384,9 +385,9 @@
 
 @layer base {
   * {
-    @apply border-border transition-colors ease-in-out duration-200;
+    @apply border-border transition-colors ease-in duration-75;
   }
-  #themeWindow {
-    @apply bg-background text-foreground   ;
+  body {
+    @apply bg-background text-foreground;
   }
 }
