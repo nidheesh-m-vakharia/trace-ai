@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Wand2,} from "lucide-react";
+import { Wand2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import TextareaAutosize from "react-textarea-autosize";
 
@@ -22,7 +22,7 @@ const CreatePageInputArea = ({
         <span className="col-start-1 row-start-1 mb-10 flex w-full flex-col">
           <TextareaAutosize
             autoFocus={true}
-            className="mb-[10vh] tracking-wider resize-none snap-center bg-transparent text-lg shadow-none outline-none"
+            className="mb-[10vh] resize-none snap-center bg-transparent text-lg tracking-wider shadow-none outline-none"
             placeholder="Type your notes here."
             id="message-2"
             name="message"

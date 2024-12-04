@@ -61,8 +61,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["hsl(--font-sans)", ...fontFamily.sans],
-        serif: [ ...fontFamily.serif],
-        mono: [ ...fontFamily.mono],
+        serif: [...fontFamily.serif],
+        mono: [...fontFamily.mono],
       },
       colors: {
         background: "hsl(var(--background))",

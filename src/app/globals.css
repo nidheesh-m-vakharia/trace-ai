@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -385,7 +383,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-colors ease-in duration-75;
+    @apply border-border transition-colors duration-75 ease-in;
   }
   body {
     @apply bg-background text-foreground;
