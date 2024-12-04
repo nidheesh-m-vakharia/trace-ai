@@ -1,32 +1,10 @@
 "use client";
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext } from "react";
+import { validTheme, validMode, themeContextProps } from "@/types/theme";
 
-type validTheme = "mono" | "github" | "pink" | "solarized" | "dracula";
-type validMode = "light" | "dark";
+export const ThemeContext = createContext<themeContextProps | null>(null);
 
-type themeContextProps = {
-  theme: validTheme;
-  themeHandler: (theme: validTheme) => void;
-  mode: validMode;
-  modeHandler: (mode: validMode) => void;
-  toggleDarkMode: () => void;
-};
-
-const ThemeContext = createContext<themeContextProps | null>(null);
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeContextProvider");
-  }
-  return context;
-};
-
-export const ThemeContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<validTheme>("solarized");
   const [mode, setMode] = useState<validMode>("light");
   const [isMounted, setIsMounted] = useState(false);
@@ -48,25 +26,22 @@ export const ThemeContextProvider = ({
     setIsMounted(true);
   }, [theme, mode]);
 
-  if (!isMounted) return null;
+  if (isMounted)
+    return (
+      <ThemeContext.Provider
+        value={
+          {
+            theme,
+            themeHandler,
+            mode,
+            modeHandler,
+            toggleDarkMode,
+          } as themeContextProps
+        }
+      >
+        {children}
+      </ThemeContext.Provider>
+    );
 
-  return (
-    <ThemeContext.Provider
-      value={
-        {
-          theme,
-          themeHandler,
-          mode,
-          modeHandler,
-          toggleDarkMode,
-        } as themeContextProps
-      }
-    >
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  return <ThemeContextProvider>{children}</ThemeContextProvider>;
+  return null;
 };
