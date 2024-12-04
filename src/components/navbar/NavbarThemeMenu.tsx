@@ -1,3 +1,4 @@
+"use client";
 import { useTheme } from "@/hooks/use-theme";
 import { type validTheme } from "@/types/theme";
 

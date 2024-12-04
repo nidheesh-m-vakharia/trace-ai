@@ -1,4 +1,6 @@
+"use client";
 import { useRouter } from "next/navigation";
+
 export const NavbarLogo = () => {
   const router = useRouter();
   const handleClick = () => {
