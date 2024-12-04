@@ -23,7 +23,7 @@ const CreatePage = () => {
 
   return (
     <div className="mb-5 mt-10 flex justify-center">
-      <div className="w-4/5">
+      <div className="w-full">
         <div className="grid grid-cols-2">
           <Label htmlFor="message-2" className="text-[50px] font-bold">
             Notes

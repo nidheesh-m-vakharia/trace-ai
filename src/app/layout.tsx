@@ -5,7 +5,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { ClerkProvider } from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/context/theme";
 
 const inter = Inter();
@@ -26,7 +26,7 @@ export default function RootLayout({
         <TooltipProvider>
           <body className={`antialiased ${inter.className}`}>
             <ThemeProvider>
-              <main className="mx-auto p-4">
+              <main className="mx-auto w-11/12 max-w-[1100px] p-4">
                 <Navbar />
                 {children}
               </main>

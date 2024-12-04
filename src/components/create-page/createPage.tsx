@@ -19,7 +19,7 @@ const CreatePageInputArea = ({
   return (
     <div className={cn(className, "overflow-x-hidden")}>
       <>
-        <span className="col-start-1 row-start-1 mb-10 flex w-full flex-col">
+        <span className="col-start-1 row-start-1 mb-10 flex flex-col">
           <TextareaAutosize
             autoFocus={true}
             className="mb-[10vh] resize-none snap-center bg-transparent text-lg tracking-wider shadow-none outline-none"

@@ -3,24 +3,27 @@ import { TypeAnimation } from "react-type-animation";
 const Title = () => {
   return (
     <div className="flex h-5/6 flex-col items-center justify-center">
-      <div className="mb-[1vw] text-[5vw] font-bold">trace.ai</div>
-      <div className="mt-[2vw] text-[1vw]">
-        <TypeAnimation
-          preRenderFirstString={true}
-          sequence={[
-            "Enhance your notes for school.",
-            1000,
-            "Enhance your notes for a project.",
-            1000,
-            "Enhance your notes for work.",
-            1000,
-            "Enhance your notes for a test.",
-            1000,
-            "Enhance your notes for a speech.",
-            1000,
-          ]}
-          repeat={Infinity}
-        />
+      <h1 className="text-9xl md:text-7xl">trace.ai</h1>
+      <div className="text-md mt-3 md:mt-5 md:text-2xl">
+        <span>Enhance your notes for</span>
+        <strong>
+          <TypeAnimation
+            preRenderFirstString={true}
+            sequence={[
+              " school.",
+              1000,
+              " a project.",
+              1000,
+              " work.",
+              1000,
+              " test.",
+              1000,
+              " speech.",
+              1000,
+            ]}
+            repeat={Infinity}
+          />
+        </strong>
       </div>
     </div>
   );
