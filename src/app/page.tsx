@@ -16,7 +16,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <div>
+      <div className="w-full">
         <Description />
       </div>
     </div>
