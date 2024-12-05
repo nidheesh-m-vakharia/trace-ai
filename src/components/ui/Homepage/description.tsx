@@ -1,6 +1,6 @@
 const Description = () => {
   return (
-    <div className="prose md:prose-xl prose-md mx-auto">
+    <div className="prose-md prose mx-auto md:prose-xl">
       <h1>Powered by OpenAI</h1>
       <p>
         Trace AI is a smart note-taking application that helps users refine and
