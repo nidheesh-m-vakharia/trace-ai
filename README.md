@@ -1,6 +1,6 @@
 # Trace AI - Note Refining App
 
-![Desktop - 1](https://github.com/user-attachments/assets/0ca3a34f-dfba-4f2b-adac-d3a7180a85cd)
+![image](https://github.com/user-attachments/assets/de4f4bdb-9674-498f-8acf-44f9e77f2bb7)
 
 ## Group Members
 
@@ -92,34 +92,35 @@ This workflow helps to ensure a structured, consistent, and high-quality develop
 
 ### Homepage `/`
 
-![Desktop - 1](https://github.com/user-attachments/assets/92b978a3-d99e-45ec-88b3-0cc677c3abd1)
+![image](https://github.com/user-attachments/assets/f04543d3-2584-4f24-9f68-eaf62d023431)
+
 This is the site's homepage on `/`. This page will redirect the user to the `/create` page. This page also contains options to log in.
 
 ### Create Page `/create`
 
-![Create Page](https://github.com/user-attachments/assets/fb79f866-9bb9-4d94-a433-9c522c7510f0)
+![image](https://github.com/user-attachments/assets/361ed1a7-1b50-4cf6-bf8d-8512a3894d91)
 
 The Create page allows the user to use the AI assistant-driven note-taking tool. The page can only be accessed if the user has logged in.
 
-![Create page - help button](https://github.com/user-attachments/assets/a2efc8af-faf6-4277-8298-b656ccab899c)
+![image](https://github.com/user-attachments/assets/6edd5b49-67cd-448b-b698-302f27982864)
 
 There are also helpful tooltips scattered all accross the page in order to direct the user.
 
 ### Log In Page `/log-in`
 
-<img src="https://github.com/user-attachments/assets/83e0644a-4321-4d8c-86c6-f24c8ff3ba85" height="600">
+![image](https://github.com/user-attachments/assets/f3e545cd-b8fc-43f1-80b4-01024948116d)
 <br>
 This is the Log In page driven by clerk API which is our prefered backend. The page will offer options to login with Google, Github and LinkedIn.
 
 ### Create Account `/create-account`
 
-<img src="https://github.com/user-attachments/assets/ccf16d1f-655c-46df-9abd-4af2e4c9e49c" height="600">
+![image](https://github.com/user-attachments/assets/a77ee58e-8dda-4fbc-bce9-924859d26740)
 <br>
 This is the Create account page driven by clerk.
 
 ### 404 Page `/not-found`
 
-![404 Page](https://github.com/user-attachments/assets/e08d509c-ab01-4d20-83fd-ea72fcdfb73c)
+![image](https://github.com/user-attachments/assets/e8ff40cc-5014-4000-a97d-40634905db1e)
 
 This page will appear when the page being accessed doesn't exist in the web app.
 

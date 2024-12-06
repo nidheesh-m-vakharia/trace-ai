@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/theme";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const inter = Inter();
 
@@ -28,9 +29,10 @@ export default function RootLayout({
           suppressHydrationWarning
         >
           <ThemeProvider>
-            <main className="mx-auto w-11/12 max-w-[1100px] p-4">
+            <main className="mx-auto w-11/12 p-4">
               <Navbar />
               {children}
+              <Footer />
             </main>
           </ThemeProvider>
         </body>
