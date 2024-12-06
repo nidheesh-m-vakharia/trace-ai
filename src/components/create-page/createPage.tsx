@@ -85,4 +85,4 @@ const CreatePageOutput = ({
   );
 };
 
-export { CreatePageForm, CreatePageInputArea, CreatePageOutput };
+export { CreatePageForm, CreatePageInputArea, CreatePageOutput, type CreatePageFormProps, type CreatePageInputAreaProps, type CreatePageOutputProps };
