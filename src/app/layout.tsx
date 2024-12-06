@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { ClerkProvider } from "@clerk/nextjs"; // Skip Next.js internals and all static files, unless found in search params
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/context/theme";
+import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/components/navbar";
 
 const inter = Inter();
 
@@ -21,20 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <ClerkProvider>
-        <TooltipProvider>
-          <body className={`antialiased ${inter.className}`}>
-            <ThemeProvider>
-              <main className="mx-auto w-11/12 p-4">
-                <Navbar />
-                {children}
-              </main>
-              <Toaster />
-            </ThemeProvider>
-          </body>
-        </TooltipProvider>
-      </ClerkProvider>
-    </html>
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
+      <html lang="en">
+        <body
+          className={`antialiased ${inter.className}`}
+          suppressHydrationWarning
+        >
+          <ThemeProvider>
+            <main className="mx-auto w-11/12 max-w-[1100px] p-4">
+              <Navbar />
+              {children}
+            </main>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

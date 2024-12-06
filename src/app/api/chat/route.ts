@@ -11,9 +11,6 @@ export async function POST(req: Request) {
         "You are a note-taking assistant. You take the user's notes from messages and enhance them through better structure, detail, and clarity.",
       messages,
     });
-
-    console.log(result);
-
     return result.toDataStreamResponse();
   } catch (error) {
     console.error("POST error", error);

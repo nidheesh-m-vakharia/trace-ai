@@ -8,8 +8,11 @@ import {
 import Markdown from "react-markdown";
 import { Label } from "@/components/ui/label";
 import { Files } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
 
 const CreatePage = () => {
+  const { isLoaded, isSignedIn } = useUser();
+
   const { messages, input, handleSubmit, isLoading, handleInputChange } =
     useChat();
 
@@ -20,6 +23,10 @@ const CreatePage = () => {
   };
 
   const output = (messages?.at(-1) && messages?.at(-1)?.content) ?? "";
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="mb-5 mt-10 flex justify-center">
