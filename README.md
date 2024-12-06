@@ -1,6 +1,6 @@
 # Trace AI - Note Refining App
 
-![image](https://github.com/user-attachments/assets/de4f4bdb-9674-498f-8acf-44f9e77f2bb7)
+![cs100gif-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4af58965-7e88-4fb9-8e6c-4e482ee74a27)
 
 ## Group Members
 
