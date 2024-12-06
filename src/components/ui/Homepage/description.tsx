@@ -1,10 +1,10 @@
 const Description = () => {
   return (
     <div className="flex w-full flex-col items-center">
-      <div className="w-3/5 lg:w-4/5">
+      <div className="w-2/5">
         <div className="mb-[1vw] text-[3vw] font-bold">Powered by OpenAI</div>
       </div>
-      <div className="mt-[2vw] w-3/5 text-[1vw] font-bold leading-normal lg:w-4/5">
+      <div className="mt-[2vw] w-2/5 text-[1vw] font-bold leading-normal">
         Trace AI is a smart note-taking application that helps users refine and
         organize their notes efficiently. The app allows users to input their
         rough notes in one window, while an AI-based engine works in another
@@ -13,12 +13,12 @@ const Description = () => {
         a user-friendly interface to make the note-taking process more
         streamlined and effective.
       </div>
-      <div className="w-3/5 lg:w-4/5">
+      <div className="w-2/5">
         <div className="mb-[1vw] mt-[5vw] text-[3vw] font-bold">
           Our mission
         </div>
       </div>
-      <div className="mb-[5vw] mt-[2vw] w-3/5 text-[1vw] font-bold leading-normal lg:w-4/5">
+      <div className="mb-[5vw] mt-[2vw] w-2/5 text-[1vw] font-bold leading-normal">
         Note-taking is a crucial skill for students and professionals alike.
         However, many people struggle to keep their notes organized or formatted
         in a way that is easy to review. With Trace AI, we aim to make
