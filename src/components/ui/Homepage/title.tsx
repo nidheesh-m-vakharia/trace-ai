@@ -16,9 +16,9 @@ const Title = () => {
               1000,
               " work.",
               1000,
-              " test.",
+              " a test.",
               1000,
-              " speech.",
+              " a speech.",
               1000,
             ]}
             repeat={Infinity}
