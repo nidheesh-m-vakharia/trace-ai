@@ -11,7 +11,7 @@
     "check": "npx prettier --check .",
     "eslint": "npx eslint -c eslint.config.mjs",
     "format": "npx prettier --write .",
-    "test": "jest"
+    "test": "cypress open"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.72",
@@ -59,7 +59,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
-    "babel-jest": "^29.7.0",
+    "cypress": "^13.16.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.0.2",
     "eslint-plugin-import": "^2.31.0",
@@ -67,7 +67,6 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
     "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
