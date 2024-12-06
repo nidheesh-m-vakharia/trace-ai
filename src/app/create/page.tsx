@@ -11,7 +11,7 @@ import { Files } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 
 const CreatePage = () => {
-  const { isLoaded, isSignedIn} = useUser();
+  const { isLoaded, isSignedIn } = useUser();
 
   const { messages, input, handleSubmit, isLoading, handleInputChange } =
     useChat();
@@ -29,7 +29,6 @@ const CreatePage = () => {
   }
 
   return (
-
     <div className="mb-5 mt-10 flex justify-center">
       <div className="w-full">
         <div className="grid grid-cols-2">
