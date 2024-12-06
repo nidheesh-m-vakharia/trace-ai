@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 import React from "react";
-import { CreatePageForm, CreatePageInputArea, CreatePageOutput } from "@/components/create-page/createPage";
+import {
+  CreatePageForm,
+  CreatePageInputArea,
+  CreatePageOutput,
+} from "@/components/create-page/createPage";
 
 describe("CreatePageComponents", () => {
   it("should render CreatePageInputArea with expected behavior", () => {
@@ -14,12 +18,11 @@ describe("CreatePageComponents", () => {
         input={input}
         handleInputChange={handleInputChange}
         isLoading={isLoading}
-      />
+      />,
     );
 
     cy.get("textarea").should("have.value", input);
     cy.get("textarea").should("not.be.disabled");
-
 
     cy.contains("Create").should("exist");
   });
@@ -30,20 +33,19 @@ describe("CreatePageComponents", () => {
     cy.mount(
       <CreatePageForm className="test-form" onSubmit={onSubmit}>
         <div>Form Content</div>
-      </CreatePageForm>
+      </CreatePageForm>,
     );
 
     cy.get("form").within(() => {
       cy.contains("Form Content").should("exist");
     });
-
   });
 
   it("should render CreatePageOutput with children", () => {
     cy.mount(
       <CreatePageOutput className="test-output">
         <p>Output Content</p>
-      </CreatePageOutput>
+      </CreatePageOutput>,
     );
 
     cy.contains("Output Content").should("exist");
