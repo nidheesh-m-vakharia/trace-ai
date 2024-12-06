@@ -28,7 +28,7 @@ export default function RootLayout({
           suppressHydrationWarning
         >
           <ThemeProvider>
-            <main className="mx-auto w-11/12 max-w-[1100px] p-4">
+            <main className="mx-auto w-11/12 p-4">
               <Navbar />
               {children}
             </main>
