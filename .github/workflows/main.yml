@@ -54,25 +54,26 @@ jobs:
 
         steps:
           - name: Checkout code
-        uses: actions/checkout@v4 # Latest version of actions/checkout
+            uses: actions/checkout@v4 # Latest version of actions/checkout
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4 # Latest version of actions/setup-node
-        with:
-          node-version: "node" # Uses the latest stable version of Node.js
 
-      - name: Install dependencies
-        run: npm install
-        env:
-          CI: true
+          - name: Set up Node.js
+            uses: actions/setup-node@v4 # Latest version of actions/setup-node
+            with:
+              node-version: "node" # Uses the latest stable version of Node.js
 
-      - name: Build code
-        run: |
-          touch .env
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "OPENAI_ASSISTANT_ID=${{ secrets.OPENAI_ASSISTANT_ID }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
-          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}" >> .env
-          npm run build
+          - name: Install dependencies
+            run: npm install
+            env:
+              CI: true
+
+          - name: Build code
+            run: |
+              touch .env
+              echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+              echo "OPENAI_ASSISTANT_ID=${{ secrets.OPENAI_ASSISTANT_ID }}" >> .env
+              echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
+              echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
+              echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }}" >> .env
+              echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}" >> .env
+              npm run build
