@@ -5,35 +5,44 @@
 ![themes2-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f176b790-81df-430b-8ffa-d473a665261f)
 
 ## How to Run
+
 - **Node.js**
-  
+
   Ensure Node.js is installed in your system.
+
 - **Clone the Repository**
-  
+
   `git clone <repository-url>`
+
 - **Navigate to Project Directory**
-  
+
   `cd <project-directory>`
+
 - **Install Dependencies**
-  
+
   `npm i`
+
 - **Env**
-  
-  Set `.env` file to 
+
+  Set `.env` file to
+
   ```
   OPENAI_API_KEY=
   OPENAI_ASSISTANT_ID=
   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
   CLERK_SECRET_KEY=
   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-  NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up 
+  NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
   ```
+
   Get API keys for OpenAI and Clerk and keep it in the file.
+
 - **Run Dev**
-  
+
   `npm run dev` to run on localhost:3000
+
 - **HOW TO PROMPT ENGINEER THE AI**
-  
+
   go to `src/app/api/chat/route.ts`
   in `system` you can give the AI what you want it to perform.
 
@@ -43,7 +52,7 @@
 - Our passing tests were components that properly rendered like it was supposed to.
 - We did not test whether or not the contents of the render was accurate or not, only if it rendered properly.
 - We used mock values to check if our components behaved as intended.
-  
+
 ## Group Members
 
 - [Nidheesh M Vakharia](https://github.com/yourgithubprofile)
