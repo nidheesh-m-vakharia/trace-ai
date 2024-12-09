@@ -27,12 +27,11 @@ jobs:
         run: npx prettier --check .
         # Use `npx prettier --write .` to auto-fix formatting issues if desired
 
-        lint:
-          name: Lint Code
-        runs-on: ubuntu-latest
-
-        steps:
-          - name: Checkout code
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v4 # Latest version of actions/checkout
 
       - name: Set up Node.js
@@ -48,31 +47,30 @@ jobs:
       - name: Run ESLint
         run: npm run eslint
 
-        build:
-          name: Build Codebase
-        runs-on: ubuntu-latest
+  build:
+    name: Build Codebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Latest version of actions/checkout
 
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4 # Latest version of actions/checkout
+      - name: Set up Node.js
+        uses: actions/setup-node@v4 # Latest version of actions/setup-node
+        with:
+          node-version: "node" # Uses the latest stable version of Node.js
 
-          - name: Set up Node.js
-            uses: actions/setup-node@v4 # Latest version of actions/setup-node
-            with:
-              node-version: "node" # Uses the latest stable version of Node.js
+      - name: Install dependencies
+        run: npm install
+        env:
+          CI: true
 
-          - name: Install dependencies
-            run: npm install
-            env:
-              CI: true
-
-          - name: Build code
-            run: |
-              touch .env
-              echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-              echo "OPENAI_ASSISTANT_ID=${{ secrets.OPENAI_ASSISTANT_ID }}" >> .env
-              echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
-              echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
-              echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }}" >> .env
-              echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}" >> .env
-              npm run build
+      - name: Build code
+        run: |
+          touch .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+          echo "OPENAI_ASSISTANT_ID=${{ secrets.OPENAI_ASSISTANT_ID }}" >> .env
+          echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}" >> .env
+          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }}" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_URL }}" >> .env
+          npm run build
