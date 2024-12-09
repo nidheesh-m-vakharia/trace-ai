@@ -23,11 +23,8 @@ export default function RootLayout({
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
-      <html lang="en">
-        <body
-          className={`antialiased ${inter.className}`}
-          suppressHydrationWarning
-        >
+      <html lang="en" suppressHydrationWarning>
+        <body className={`antialiased ${inter.className}`}>
           <ThemeProvider>
             <main className="mx-auto w-11/12 p-4">
               <Navbar />
