@@ -6,7 +6,7 @@ on:
 
 jobs:
   format:
-    name: Check Formatting
+    name: format check
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         # Use `npx prettier --write .` to auto-fix formatting issues if desired
 
   lint:
-    name: Lint Code
+    name: lint check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -48,7 +48,7 @@ jobs:
         run: npm run eslint
 
   build:
-    name: Build Codebase
+    name: build check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
