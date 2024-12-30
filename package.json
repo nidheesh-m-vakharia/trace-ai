@@ -27,6 +27,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
+    "@supabase/supabase-js": "^2.47.6",
     "@tanstack/eslint-plugin-query": "^5.59.7",
     "ai": "^3.4.33",
     "class-variance-authority": "^0.7.0",
